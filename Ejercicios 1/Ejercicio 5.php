@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title="Ejercicio 4"> </title>
+        <title="Ejercicio 5"> </title>
     </head>
 
     <body>
@@ -9,11 +9,18 @@
             <?php
             echo "<table border = 1>\n";
             echo "<div align=center>\n";
-            for($i = 0; $i < 10; ++$i)
+            define("TAM",10);
+            for($i = 0; $i < TAM; ++$i)
             {
-                for($j = 0; $j < 10; ++$j)
+                if($i%2==0)
+                    echo "<tr bgcolor=#bdc3d6>\n";
+                else
                 {
-                    echo ("<td>".(10*$i+$j+1)."</td>\n");
+                    echo "<tr>\n";
+                }
+                for($j = 0; $j < TAM; ++$j)
+                {
+                    echo ("<td>".(TAM*$i+$j+1)."</td>\n");
                 }
                 echo "</tr>\n";
             }
