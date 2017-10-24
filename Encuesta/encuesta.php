@@ -5,6 +5,7 @@
     <body>
     <?php
         include "encabezado.php";
+        include "seccion_1.php";
     ?>
     </body>
 </html>
