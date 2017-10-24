@@ -6,6 +6,7 @@
             <h2> <font style =\"text-transform: uppercase;\">
                 Encuesta de opinión de los/as estudiantes <br>
                 sobre la labor docente del profesorado
+                </font>
             </h2>
         </div>";
 ?>
