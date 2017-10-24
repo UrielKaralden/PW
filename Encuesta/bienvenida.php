@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title> Acceso a la encuesta </title>
+        <title> Acceso a la encuesta de satisfaccion </title>
     </head>
     <body>
         <h1> Acceso a la encuesta</h1>
