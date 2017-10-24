@@ -23,6 +23,6 @@ CREATE TABLE Respuestas (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   id_Preguntas int NOT NULL,
   id_Encuestas int NOT NULL,
-  FOREIGN KEY (id_Preguntas) REFERENCES Dimensiones(id)
-  FOREIGN KEY (id_EncuestasRellenas) REFERENCES Dimensiones(id)
+  FOREIGN KEY (id_Preguntas) REFERENCES Dimensiones(id),
+  FOREIGN KEY (id_Encuestas) REFERENCES Dimensiones(id)
 );
