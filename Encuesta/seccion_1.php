@@ -13,11 +13,11 @@
             <font style = \"text-transform: none;\">
                 <form action = \"respuestas_s1.php\" method = \"POST\">
                     Código de Titulación
-                    <input type = \"number\" name = \"Código de Titulación\">
+                    <input type = \"number\" name = \"titulacion\">
                     Código de Asignatura
-                    <input type = \"number\" name = \"Código de Asignatura\">
+                    <input type = \"number\" name = \"asignatura\">
                     Código de Grupo
-                    <input type = \"number\" name = \"Código de Grupo\"> <br><br>
+                    <input type = \"number\" name = \"grupo\"> <br><br>
                     <input type = \"submit\" value = \"Continuar\">
                     </form>
             </font>
