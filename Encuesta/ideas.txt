@@ -1,0 +1,17 @@
+/* Ideas sobre el proyecto de la encuesta */
+
+Idea 1:
+La autenticación del usuario incluye implicitamente
+el estudio al que pertenece, pues sólo puede pertenecer a uno.
+
+Idea 2:
+Las encuestas se administran gráficamente,
+no se deben editar en código.
+
+Idea 3:
+El encabezado y el pie de página deberán estar presentes en todas
+las páginas php mediante el uso de include
+
+Idea 4:
+El sistema de autenticación se controlara mediante el uso de
+funciones de sesión ($_SESSION)
