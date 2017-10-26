@@ -1,4 +1,4 @@
-/* Ideas sobre el proyecto de la encuesta */
+﻿/* Ideas sobre el proyecto de la encuesta */
 
 Idea 1:
 La autenticación del usuario incluye implicitamente
@@ -15,3 +15,7 @@ las páginas php mediante el uso de include
 Idea 4:
 El sistema de autenticación se controlara mediante el uso de
 funciones de sesión ($_SESSION)
+
+Idea 5:
+Falta la comprobación de los resultados de las encuestas en el esquema
+de organización.
