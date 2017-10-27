@@ -19,3 +19,9 @@ funciones de sesión ($_SESSION)
 Idea 5:
 Falta la comprobación de los resultados de las encuestas en el esquema
 de organización.
+
+Idea 6:
+Falta una pagina para crear usuarios
+  - Nickname
+  - Password if needed
+  - Estudio
