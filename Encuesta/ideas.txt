@@ -25,3 +25,11 @@ Falta una pagina para crear usuarios
   - Nickname
   - Password if needed
   - Estudio
+
+Idea 7:
+Añadir tabla de usuarios del sistema
+para controlar si son administradores o usuarios simples
+
+Idea 8:
+Permitir al administrador modificar el tipo de usuario
+de los usuarios
