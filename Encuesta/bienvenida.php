@@ -6,7 +6,7 @@
         <h1> Bienvenido al Sistema de Encuestas al Alumnado </h1>
         <div align = "center">
             Para acceder al sistema, haga click en Comenzar <br>
-            <form action = "seleccion_encuesta.php" method = "POST">
+            <form action = "select_encuesta.php" method = "POST">
                 <input type ="submit" value="Comenzar"><br>
             </form>
         </div>
