@@ -4,7 +4,7 @@
     </head>
     <body>
         <div align = "center">
-            <h1> Selección de Encuestas </h1>
+            <h3> Selección de Encuestas </h3>
             Por favor seleccione la encuesta a la que desea acceder. <br>
         </div>
         <div align = "center">

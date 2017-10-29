@@ -5,7 +5,7 @@
     <body>
     <?php
       echo "<div align = \"center\">
-        <h1> Crear un nuevo usuario </h1>
+        <h3> Crear un nuevo usuario </h3>
         Para poder utilizar nuestro sistema de encuestas, <br>
         rellene los campos indicados a continuación <br>
         <form action = \"create_login.php\" method = \"POST\">
