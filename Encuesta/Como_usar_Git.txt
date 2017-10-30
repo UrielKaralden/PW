@@ -1,0 +1,29 @@
+Manual de Git v1.0 (De tontos para tontos)
+{
+    A - Pasos Básicos para que funcione el sistema
+        1. Instalar Git (Si no lo instalas, pa qué carajo lees esto)
+        2. Hacerse una cuenta en GitHub (Lo mismo que arriba)
+        3. En el bash de Git introducir las siguientes instrucciones:
+            git config --global user.name "<nombre_usuario>"
+            git config --global user.email "<correo_electronico>"
+
+    B - Cómo clonar un repositorio
+        1. Acceder a un repositorio en GitHub
+        2. Hacer click en Clonar o Descargar
+        3. Copiar el enlace
+        4. Acceder a la carpeta del ordenador donde queremos
+            almacenar el repositorio localmente
+        5. Introducir la instruccion: git clone <enlace_repositorio>
+
+    D - Cómo actualizar un repositorio web
+        0. Introducir en el bash de git la instruccion:
+            git pull (Actualizamos la version local del repositorio web)
+        1. Crear/Modificar/Eliminar un fichero del repositorio
+        2. Introducir en el bash de git la instruccion:
+            git add <nombre_fichero>
+        3. Introducir en el bash de git la instruccion:
+            git commit -m <mensaje> donde mensaje describe la modificación
+            realizada en unos 150 caracteres
+        4. Introducir en el bash de git la instruccion:
+            git push (Actualizamos el repositorio web a partir de la version local)
+}
