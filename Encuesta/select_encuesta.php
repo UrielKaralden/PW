@@ -8,14 +8,15 @@
             Por favor seleccione la encuesta a la que desea acceder. <br>
         </div>
         <div align = "center">
-
-
             <?php
                 // Sessión con Mysql
                 // $user_estudio = Estudio al que pertenece el usuario
-                $user_estudio = 1;
-                $sql_instruccion = "SELECT id FROM Encuestas WHERE id_Estudios = $user_estudio";
-                $muestra_consultas = $mysqli_query($sql_instruccion, $conexion);
+                session_start();
+                $conexion = mysqli_connect('localhost',"$_SESSION('usuario')","$_SESSION('password')",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
+                $buscar_estudio = "SELECT id_Estudio FROM Usuarios WHERE nombre = $_SESSION('usuario')";
+                $estudio = $mysqli_query($buscar_estudio);
+                $buscar_encuestas = "SELECT id FROM Encuestas WHERE $estudio = $user_estudio";
+                $muestra_consultas = $mysqli_query($buscar_encuestas, $conexion);
                 $num_encuestas = $mysqli_num_rows($muestra_consultas);
                 echo "<table border = 1>";
                 echo "<div align=center>\n";
@@ -23,8 +24,8 @@
                 // Comprobar usuario
 
                 // Usuario de tipo administrador
-                $user_type = 'admin';
-                if($user_type == 'admin')
+                $user_admin = $_SESSION('admin');
+                if($user_admin)
                   $ref_encuesta = 'admin_encuesta.php';
                 else
                   $ref_encuesta = 'encuesta.php'
