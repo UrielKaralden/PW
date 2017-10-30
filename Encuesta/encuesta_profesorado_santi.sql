@@ -31,3 +31,10 @@ CREATE TABLE Respuestas (
   FOREIGN KEY (id_Preguntas) REFERENCES Dimensiones(id),
   FOREIGN KEY (id_Encuestas) REFERENCES Dimensiones(id)
 );
+
+CREATE TABLE Usuarios (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre tinytext NOT NULL UNIQUE,
+  password tinytext NOT NULL,
+  admin int NOT NULL,
+);
