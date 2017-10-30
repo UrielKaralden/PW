@@ -36,5 +36,5 @@ CREATE TABLE Usuarios (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nombre tinytext NOT NULL UNIQUE,
   password tinytext NOT NULL,
-  admin int NOT NULL,
+  admin int NOT NULL
 );
