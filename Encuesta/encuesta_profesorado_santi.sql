@@ -34,7 +34,7 @@ CREATE TABLE Respuestas (
   FOREIGN KEY (id_Encuestas) REFERENCES Dimensiones(id)
 );
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `Usuarios` (
   `id` int(32) NOT NULL,
   `nombre` tinytext NOT NULL,
   `password` varchar(20) NOT NULL,
