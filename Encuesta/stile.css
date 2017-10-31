@@ -3,6 +3,10 @@ header{
 	margin-right: 320px;
 }
 
+footer{
+	text-align: center;
+}
+
 .contenedor
 {
 	width:500px;
