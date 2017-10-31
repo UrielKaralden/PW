@@ -33,12 +33,12 @@ CREATE TABLE Respuestas (
   FOREIGN KEY (id_Encuestas) REFERENCES Dimensiones(id)
 );
 
-CREATE TABLE `Usuarios` (
-  `id` int(32) NOT NULL,
-  `nombre` tinytext NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `admin` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE Usuarios (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre tinytext NOT NULL,
+  password varchar(20) NOT NULL,
+  admin tinyint(1) NOT NULL
+);
 
 
 ALTER TABLE `Usuarios`
