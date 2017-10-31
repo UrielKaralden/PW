@@ -14,6 +14,7 @@
 			session_start();
 			$_SESSION['usuario']=$usuario;
 			$_SESSION['admin']=$row['admin'];
+			$_SESSION['id_Estudio']=$row['id_Estudio'];
 			header("Location: select_encuesta.php");
 		}else{
 			echo "Fuera Invasor";
