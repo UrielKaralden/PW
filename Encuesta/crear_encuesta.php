@@ -12,7 +12,7 @@
                     <input type = \"text\" name = \"nombre\"><br>
                     Introduzca una descripción de la encuesta:
                     <input type = \"text\" name = \"descripcion\"><br>
-                    <input type = \"submit\" value = \"Crear\"
+                    <button type = \"submit\">Crear</button>
                 </form>";
             ?>
         </div>
