@@ -5,6 +5,8 @@ CREATE TABLE Estudios (
 
 CREATE TABLE Encuestas (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nombre tinytext NOT NULL,
+  descripcion text NOT NULL,
   id_Estudios int NOT NULL,
   FOREIGN KEY (id_Estudios) REFERENCES Estudios(id)
 );
