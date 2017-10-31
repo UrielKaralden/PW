@@ -13,7 +13,7 @@ CREATE TABLE Encuestas (
 
 CREATE TABLE Secciones (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nombre tinytext NOT NULL
+  descripcion text NOT NULL
 );
 
 CREATE TABLE Preguntas (
@@ -21,7 +21,6 @@ CREATE TABLE Preguntas (
   id_Secciones int NOT NULL,
   tipo_pregunta int NOT NULL,
   pregunta text NOT NULL,
-  descripcion text,
   FOREIGN KEY (id_Secciones) REFERENCES Secciones(id)
 );
 
