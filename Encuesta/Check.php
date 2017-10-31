@@ -1,7 +1,8 @@
 <?php
 	$usuario=$_POST['user'];
 	$pswd=$_POST['passwd'];
-	if(empty($usuario) && empty($pass)){
+	$pswdHash = password_hash($pswd, PASSWORD_BCRYPT); // pswdHash = contraseña encriptada
+	if(empty($usuario) && empty($pswd)){
 		header("Location: Login2.html");
 		exit();
 	}
@@ -10,7 +11,7 @@
 
 	$result=mysqli_query("SELECT * from usuarios where user='" . $usuario . "'");
 	if($row=$mysqli_fecth_array($result)){
-		if($row['password']==$pswd){
+		if($row['password']==$pswdHash){
 			session_start();
 			$_SESSION['usuario']=$usuario;
 			$_SESSION['admin']=$row['admin'];
