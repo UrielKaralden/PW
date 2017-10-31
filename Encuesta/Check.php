@@ -7,7 +7,7 @@
 		exit();
 	}
 
-	mysql_connect('localhost','root','','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
+	mysqli_connect('localhost','root','','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
 
 	$result=mysqli_query("SELECT * from usuarios where user='" . $usuario . "'");
 	if($row=$mysqli_fecth_array($result)){
