@@ -1,15 +1,25 @@
 <?php
 	$usuario=$_POST['user'];
 	$pswd=$_POST['passwd'];
+
+	if ($usuario == null) :
+		echo "error";
+	endif;
+
 	$pswdHash = password_hash($pswd, PASSWORD_BCRYPT); // pswdHash = contraseña encriptada
-	if(empty($usuario) && empty($pswd)){
+	if(empty($usuario) && empty($pswd))
+	{
 		header("Location: Login2.html");
 		exit();
 	}
 
-	mysqli_connect('localhost','root','','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
+	$varConn = mysqli_connect('localhost','root','','Encuesta_profesorado')
+			   or die("Error al conectar " . mysqli_error());
+	
+	$query = "SELECT * FROM usuarios WHERE user = '$usuario'";
 
-	$result=mysqli_query("SELECT * from usuarios where user='" . $usuario . "'");
+	$result = (mysqli_query($varConn, $query);
+
 	if($row=$mysqli_fecth_array($result)){
 		if($row['password']==$pswdHash){
 			session_start();
