@@ -62,13 +62,15 @@
 		exit();
 	}*/
 
+/*
+SELECT * FROM Respuestas
+WHERE id_Encuesta = 10
+AND id_Preguntas IN
+ (SELECT id FROM Preguntas
+  WHERE id_Secciones = 15);
+*/
+
 ?>
 
 
 
-
-SELECT * FROM Respuestas
-WHERE id_Encuesta = $id_encuesta
-AND id_Preguntas IN
- (SELECT id FROM Preguntas
-  WHERE id_Secciones = $id_seccion)
