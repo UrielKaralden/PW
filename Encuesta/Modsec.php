@@ -7,11 +7,11 @@
 		exit();
 	}
 	else{
-		mysqli_connect('localhost','root','','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
+		mysqli_connect('localhost','root_encuesta','encuesta_root','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
 		if($action=="Modificar"){
-			$result=mysqli_query("SELECT * from seccion where nombre='$nombre' and id_Encuesta='$iden'");
+			$result=mysqli_query("SELECT * from secciones where nombre='$nombre' and id_Encuesta='$iden'");
 			if($row=$mysqli_fecth_array($result)){
-				 echo "<form action = \"pregunta_encuesta.php\" method = \"POST\">
+				 echo "<form action = \"crear_pregunta.php\" method = \"POST\">
 				<input type = \"hidden\" name = \"id_section\" value = \"$row['id']\"><br>
 				</form>";
 				exit();
@@ -21,7 +21,7 @@
 			}
 		}else{
 			if($action=="Crear"){
-				$result = mysqli_query("INSERT INTO seccion(id,nombre,id_Encuesta) VALUES('', '$nombre','$identificator')");
+				$result = mysqli_query("INSERT INTO secciones(id,nombre,id_Encuesta) VALUES('', '$nombre','$identificator')");
 				if($result)
 					echo"<script>alert('Exito al crear');window.location='crear_seccion.php';</script>";
 				else

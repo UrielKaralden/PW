@@ -15,7 +15,7 @@
 			 echo"<input type=\"hidden\" name=\"iden\" value=$_POST['id_encuesta'] />";
 			?>
 			<button type="submit">Continuar</button>
-		<form>
+		</form>
 		</center>
-	</body>	
+	</body>
 </html>
