@@ -27,6 +27,29 @@
 			$_SESSION['admin']=$row['admin'];
 			$_SESSION['id_Estudio']=$row['id_Estudio'];
 			header("Location: select_encuesta.php");
+<<<<<<< HEAD:Encuesta/check_usuario.php
+		}
+		else
+		{
+			echo "Fuera Invasor";
+			header("Location: Login3.html");
+			exit();
+		}
+	}
+	else
+	{
+		echo "Fuera Invasor";
+		header("Location: Login3.html");
+		exit();
+	}
+/*
+SELECT * FROM Respuestas
+WHERE id_Encuesta = 10
+AND id_Preguntas IN
+ (SELECT id FROM Preguntas
+  WHERE id_Secciones = 15);
+*/
+=======
 		}else{
 			echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
 			exit();
@@ -52,5 +75,6 @@
 		echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
 		exit();
 	}*/
+>>>>>>> 86c7ac6237c18d18a2f17d3343e121f6f477afdf:Encuesta/Check.php
 
 ?>
