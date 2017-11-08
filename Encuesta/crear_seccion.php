@@ -11,6 +11,9 @@
 			<br />
 			<input type="text" name="modcre" placeholder="Modificar o Crear"/>
 			<br />
+			<?php
+			 echo"<input type=\"hidden\" name=\"iden\" value=$_POST['id_encuesta'] />";
+			?>
 			<button type="submit">Continuar</button>
 		<form>
 		</center>
