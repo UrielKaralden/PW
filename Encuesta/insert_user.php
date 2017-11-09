@@ -9,6 +9,7 @@
     session_start();
     $name = $_POST['nombre'];
     $pswd = $_POST['password'];
+	$email = $_POST['email'];
 
     if (empty($name) && empty($pswd))
     {
@@ -17,9 +18,9 @@
     $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
     mysqli_set_charset($conexion,"utf8");
     if($name == 'admin')
-        $user_query = "INSERT INTO usuarios (nombre, password, admin) VALUES ('$name', '$pswd', 1);";
+        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', 1);";
     else
-        $user_query = "INSERT INTO usuarios (nombre, password, admin) VALUES ('$name', '$pswd', 0);";
+        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', 0);";
     mysqli_query($conexion, $user_query);
 
     header("Location: Login.html");

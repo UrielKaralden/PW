@@ -4,17 +4,17 @@
     </head>
     <body>
         <div align = "center">
-            <?php
                 // Formulario de creación de usuario
-                echo "<h3> Registro de nuevo usuario </h3><br>
-                <form action = \"insert_user.php\" method = \"POST\">
+                <h3> Registro de nuevo usuario </h3><br>
+                <form action = "insert_user.php" method = "POST">
                     Introduzca su nombre de usuario:
-                    <input type = \"text\" name = \"nombre\"><br>
+                    <input type = "text" name = "nombre"><br><br>
+                    Introduzca su correo electrónico:
+                    <input type = "text" name = "email"><br><br>
                     Introduzca contraseña:
-                    <input type = \"text\" name = \"password\"><br>
-                    <button type = \"submit\">Crear</button>
+                    <input type = "password" name = "password"><br><br><br>
+                    <button type = "submit">Crear</button>
                 </form>";
-            ?>
         </div>
     </body>
 </html>
