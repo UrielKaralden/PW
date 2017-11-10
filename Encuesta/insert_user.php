@@ -48,7 +48,9 @@
 		session_start();
 		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 		mysqli_set_charset($conexion,"utf8");
-        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', '$email', '$value');";
+        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
+		// De haber tiempo, encriptar contraseña
+
 		mysqli_query($conexion, $user_query);
 		header("Location: Login.html");
 		mysqli_close($conexion);
