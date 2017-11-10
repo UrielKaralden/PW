@@ -51,13 +51,13 @@
 							}
 							else
 							{
-								echo "<input type = \"$question_type\" name = \"respuestas[]\" placeholder="Responda aqui"/><br><br>";
+								echo "<input type = \"$question_type\" name = \"respuestas[]\" placeholder=\"Responda aqui\"/><br><br>";
 							}
 							echo "<input type = \"hidden\" name = \"ids_pregunta[]\" value = \"$num\">";
 		                }
 						/*
 	                    Como incluir comentario en la encuesta*/
-	                    <textarea name="comment" rows="5" cols="40"></textarea>
+	                    echo "<textarea name=\"comment\" rows=\"5\" cols=\"40\" placeholder = \"Observaciones\"></textarea>
 
 						echo "<button type=\"submit\">Enviar respuestas</button><br>";
                     ?>
