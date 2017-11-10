@@ -4,12 +4,12 @@
 </head>
 <body>
 <?php
-    error_reporting(E_ALL & ~E_NOTICE);
+    //error_reporting(E_ALL & ~E_NOTICE);
     // Resolución del formulario de la encuesta
 
 	// Comprobación de campos obligatorios
-	$nameErr = $emailErr = $pswdErr = "";
-	$name = $email = $pswd = "";
+	$nameErr = $emailErr = $pswdErr = $estudioErr = "";
+	$name = $email = $pswd = $estudio = "";
 	if ($_SERVER["REQUEST_METHOD"]=="POST")
 	{
 		if(empty($_POST['nombre']))
@@ -25,10 +25,12 @@
 		if(empty($_POST['password']))
 			$pswdErr = "El campo Contraseña es obligatorio";
 		else
-		{
 			$pswd = test_input($_POST['password']);
-			$pswd = password_hash($pswd, PASSWORD_BCRYPT);
-		}
+
+		if(empty($_POST['estudio']))
+			$estudioErr = "El campo Contraseña es obligatorio";
+		else
+			$estudio = test_input($_POST['estudio']);
 	}
 
 	function test_input($data)
@@ -39,8 +41,8 @@
 		return $data;
 	}
 
-    if (empty($name) && empty($email) && empty($pswd))
-	    echo"<script>alert('ERES INUTIL. APRENDE A ESCRIBIR');window.location='crear_usuario.php';</script>";
+    if (empty($name) && empty($email) && empty($pswd) && empty($estudio))
+	    echo"<script>alert('Ha dejado un campo obligatorio sin rellenar. \nPor favor, revíselo');window.location='crear_usuario.php';</script>";
 	else
 	{
     	if($name == 'admin')
@@ -49,24 +51,56 @@
 			$value = 0;
 
 		session_start();
-		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
+		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') 
+						or die ("Error al conectar " . mysqli_error());
 		mysqli_set_charset($conexion,"utf8");
 
-		$new_user_query = "Select * from usuarios where nombre = $name and email = $email and password = $pswd;";
-		$new_user_result = mysqli_query($conexion, $new_user_query);
-		if(!($registered_user = mysqli_fetch_field($new_user_result)))
+		// Comprobamos que existe el estudio
+		$new_estudio_query = "SELECT id FROM estudios WHERE nombre = '$estudio';";
+		$new_estudio_result = mysqli_query($conexion, $new_estudio_query);
+		$num_estudios = mysqli_num_rows($new_estudio_result);
+		if($num_estudios==0)
 		{
-        	$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
-			// De haber tiempo, encriptar contraseña con biblioteca libsodium
+			$insert_estudio_query = "INSERT INTO estudios (nombre) VALUES ('$estudio');";
+			mysqli_query($conexion, $insert_estudio_query);
+		}
 
-			mysqli_query($conexion, $user_query);
-			header("Location: Login.html");
+		$id_estudio_query = "SELECT id FROM estudios WHERE nombre = '$estudio';";
+		$id_estudio_result = mysqli_query($conexion, $new_estudio_query);
+		$id_estudio = mysqli_fetch_field($id_estudio_result);
+
+		$user_query  = "SELECT * FROM usuarios WHERE nombre = '$name' AND email = '$email';";
+		$user_result = mysqli_query($conexion, $user_query);
+		if($user_result === FALSE) 
+		{ 
+    		die(mysqli_error($conexion)); // TODO: better error handling
+		}
+
+		$num_users   = mysqli_num_rows($user_result);
+
+		// Escaping php variables
+		if($num_users==0)
+		{
+			$name = mysqli_real_escape_string($conexion, $name);
+			$email = mysqli_real_escape_string($conexion, $email);
+			$pswd = mysqli_real_escape_string($conexion, $pswd);
+
+			echo "$id_estudio";
+			echo "$name";
+			echo "$email";
+			echo "$pswd";
+			echo "$value";
+
+			$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
+			// De haber tiempo, encriptar contraseña con biblioteca libsodium
+			//mysqli_query($conexion, $new_user_query);
 		}
 		else
 		{
-			echo"<script>alert('ESE USUARIO YA HA SIDO REGISTRADO');window.location='crear_usuario.php';</script>";
+			echo "<script>alert('Ese usuario ya estaba registrado');window.location='crear_usuario.php';</script>";
 		}
-			mysqli_close($conexion);
+		header("Location: Login.html");
+		mysqli_close($conexion);
 	}
 	/*
 	else
