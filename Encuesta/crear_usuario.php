@@ -23,12 +23,6 @@
                     Introduzca el lugar donde se realizará el estudio:
                     <input type = "text" name = "estudio" placeholder="Lugar de Estudio">
                     <span class="error">* </span><br><br>
-
-                    <!--
-                    Como incluir comentario en la encuesta
-                    Comment: <textarea name="comment" rows="5" cols="40"></textarea>
-                    -->
-
                     <button type = "submit">Crear</button>
                 </form>
         </div>
