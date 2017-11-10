@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title> Registro de ususario </title>
+        <title> Registro de usuario </title>
     </head>
     <style>
         .error {color: #FF0000;}
@@ -19,6 +19,9 @@
                     <span class="error">* </span><br><br>
                     Introduzca contraseña:
                     <input type = "password" name = "password" placeholder="Contraseña">
+                    <span class="error">* </span><br><br>
+                    Introduzca el lugar donde se realizará el estudio:
+                    <input type = "text" name = "estudio" placeholder="Lugar de Estudio">
                     <span class="error">* </span><br><br>
 
                     <!--
