@@ -20,5 +20,5 @@
     ('', $name, $descripcion, $estudio);";
 
     $resultado = mysqli_query($conexion, $insertar_encuesta);
-    echo"header(\"Location: bienvenida.php\")";
+    echo"header(\"Location: index.php\")";
 ?>
