@@ -36,25 +36,30 @@
 							$num = $next_question->id;
 							$section = $next_question->id_Secciones;
 							$question_type = $next_question->tipo;
-							$text = $next_question->pregunta;
+							$texto = $next_question->pregunta;
 
 							echo "$texto<br>";
 							if ($question_type == 'radio')
 							{
 								$respuestas_query = "Select * from radio_respuestas where id_Pregunta = $num";
 								$respuestas = mysqli_query($conexion, $respuestas_query);
-								while($info = mysqli_fecth_field($respuestas))
+								while($info = mysqli_fecth_field($respuestas));
 								{
-									echo "<input type = \"$question_type\" name = \"$num\" value = \"$info->texto\"><br>";
+									echo "$info->texto";
+									echo "<input type = \"$question_type\" name = \"respuestas[]\"><br>";
 								}
 							}
 							else
 							{
-								echo "<input type = \"$question_type\" name = \"$num\" placeholder="Responda aqui"/><br><br>"
+								echo "<input type = \"$question_type\" name = \"respuestas[]\" placeholder="Responda aqui"/><br><br>";
 							}
-
+							echo "<input type = \"hidden\" name = \"ids_pregunta[]\" value = \"$num\">";
 		                }
-						echo "<button type=\"submit\">Enviar respuestas</button>";
+						/*
+	                    Como incluir comentario en la encuesta*/
+	                    <textarea name="comment" rows="5" cols="40"></textarea>
+
+						echo "<button type=\"submit\">Enviar respuestas</button><br>";
                     ?>
 				</form>
 			</center>
