@@ -52,6 +52,7 @@
 		}
 		else
 		{
+			echo " LA CONTRASEÑA NO ES CORRECTA, MOTHERFUCKER";
 			//echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
 			exit();
 		}
