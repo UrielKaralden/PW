@@ -51,8 +51,7 @@
 			$value = 0;
 
 		session_start();
-		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') 
-						or die ("Error al conectar " . mysqli_error());
+		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 		mysqli_set_charset($conexion,"utf8");
 
 		// Comprobamos que existe el estudio
@@ -67,16 +66,12 @@
 
 		$id_estudio_query = "SELECT id FROM estudios WHERE nombre = '$estudio';";
 		$id_estudio_result = mysqli_query($conexion, $new_estudio_query);
-		$id_estudio = mysqli_fetch_field($id_estudio_result);
+		$id_estudio = mysqli_fetch_assoc($id_estudio_result);
+		$num_estudio = $id_estudio['id'];
 
-		$user_query  = "SELECT * FROM usuarios WHERE nombre = '$name' AND email = '$email';";
+		$user_query = "SELECT * FROM usuarios WHERE nombre = '$name' AND email = '$email';";
 		$user_result = mysqli_query($conexion, $user_query);
-		if($user_result === FALSE) 
-		{ 
-    		die(mysqli_error($conexion)); // TODO: better error handling
-		}
-
-		$num_users   = mysqli_num_rows($user_result);
+		$num_users = mysqli_num_rows($user_result);
 
 		// Escaping php variables
 		if($num_users==0)
@@ -91,15 +86,22 @@
 			echo "$pswd";
 			echo "$value";
 
-			$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
+			$user_query = "INSERT INTO `usuarios` (`id_Estudio`, `nombre`, `email`, `password`, `admin`) VALUES ('$num_estudio', '$name', '$email', '$pswd', '$value');";
 			// De haber tiempo, encriptar contraseña con biblioteca libsodium
-			//mysqli_query($conexion, $new_user_query);
+			mysqli_real_query($conexion, $user_query);
+			if($user_query)
+			{
+				echo "La inserción ha resultado exitosa";
+				header("Location: Login.html");
+			}
+			else
+				echo "<script>alert('Algo falla en la consulta');window.location='crear_usuario.php';</script>";
 		}
 		else
 		{
 			echo "<script>alert('Ese usuario ya estaba registrado');window.location='crear_usuario.php';</script>";
 		}
-		header("Location: Login.html");
+
 		mysqli_close($conexion);
 	}
 	/*
