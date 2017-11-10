@@ -12,12 +12,13 @@
                 // Sessión con Mysql
                 // $user_estudio = Estudio al que pertenece el usuario
                 session_start();
-                $conexion = mysqli_connect('localhost',"$_SESSION('usuario')","$_SESSION('password')",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
+                $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
                 $buscar_estudio = "SELECT id_Estudio FROM Usuarios WHERE nombre = $_SESSION('usuario')";
                 $estudio = $mysqli_query($buscar_estudio);
                 $buscar_encuestas = "SELECT id FROM Encuestas WHERE $estudio = $user_estudio";
-                $muestra_consultas = $mysqli_query($buscar_encuestas, $conexion);
-                $num_encuestas = $mysqli_num_rows($muestra_consultas);
+                $muestra_consultas = mysqli_query($buscar_encuestas, $conexion);
+                $num_encuestas = mysqli_num_rows($muestra_consultas);
+
                 echo "<table border = 1>";
                 echo "<div align=center>\n";
 
