@@ -9,7 +9,7 @@
 			<?php
                 session_start();
                 $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
-				
+
                 // Obtener el ID de la última respuesta almacenada
                 $last_id_query = "Select max(id) from respuestas;";
                 $last_id = mysqli_query($conexion, $last_id_query);
@@ -31,6 +31,8 @@
 					$insercion = mysqli_query($conexion, $query);
 				}
 				echo "Sus respuestas han sido procesadas. Gracias por participar.";
+
+				// Incluir usuario en participantes
             ?>
 		</div>
 	</body>
