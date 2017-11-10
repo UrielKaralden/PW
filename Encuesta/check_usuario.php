@@ -41,9 +41,11 @@
 	if($user_data == $usuario)
 	{
 		echo "EL USUARIO ES CORRECTO, MOTHERFUCKER";
+		echo "<br><br>";
+
 		if($users['password']==$pswd)
 		{
-			echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
+			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
 			$_SESSION['usuario']=$usuario;
 			$_SESSION['admin']=$users['admin'];
 			$_SESSION['id_Estudio']=$users['id_Estudio'];
@@ -52,7 +54,8 @@
 		}
 		else
 		{
-			echo " LA CONTRASEÑA NO ES CORRECTA, MOTHERFUCKER";
+			echo " LA CONTRASEÑA NO ES CORRECTA, MOTHERFUCKER \n";
+			echo "<br><br>";
 			//echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
 			exit();
 		}
