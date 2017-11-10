@@ -48,12 +48,22 @@
 		session_start();
 		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 		mysqli_set_charset($conexion,"utf8");
-        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
-		// De haber tiempo, encriptar contraseña
 
-		mysqli_query($conexion, $user_query);
-		header("Location: Login.html");
-		mysqli_close($conexion);
+		$new_user_query = "Select * from usuarios where nombre = $name and email = $email and password = $pswd;";
+		$new_user_result = mysqli_query($conexion, $new_user_query);
+		if(!($registered_user = mysqli_fetch_field($new_user_result)))
+		{
+        	$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', $pswd, '$email', '$value');";
+			// De haber tiempo, encriptar contraseña con biblioteca libsodium
+
+			mysqli_query($conexion, $user_query);
+			header("Location: Login.html");
+		}
+		else
+		{
+			echo"<script>alert('ESE USUARIO YA HA SIDO REGISTRADO');window.location='crear_usuario.php';</script>";
+		}
+			mysqli_close($conexion);
 	}
 	/*
 	else
