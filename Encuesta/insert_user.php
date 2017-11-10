@@ -80,7 +80,7 @@
 			$email = mysqli_real_escape_string($conexion, $email);
 			$pswd = mysqli_real_escape_string($conexion, $pswd);
 
-			echo "$id_estudio";
+			//echo "$id_estudio";
 			echo "$name";
 			echo "$email";
 			echo "$pswd";
