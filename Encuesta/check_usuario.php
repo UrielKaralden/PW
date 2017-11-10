@@ -20,26 +20,25 @@
 
 	$result = (mysqli_query($varConn, $query);
 
-	if($row=$mysqli_fecth_array($result)){
-		if($row['password']==$pswdHash){
+	if($row=$mysqli_fecth_array($result))
+	{
+		if($row['password']==$pswdHash)
+		{
 			session_start();
 			$_SESSION['usuario']=$usuario;
 			$_SESSION['admin']=$row['admin'];
 			$_SESSION['id_Estudio']=$row['id_Estudio'];
 			header("Location: select_encuesta.php");
-<<<<<<< HEAD:Encuesta/check_usuario.php
 		}
 		else
 		{
 			echo "Fuera Invasor";
-			header("Location: Login3.html");
 			exit();
 		}
 	}
 	else
 	{
 		echo "Fuera Invasor";
-		header("Location: Login3.html");
 		exit();
 	}
 /*

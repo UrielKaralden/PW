@@ -25,7 +25,10 @@
 		if(empty($_POST['password']))
 			$pswdErr = "El campo Contraseña es obligatorio";
 		else
+		{
 			$pswd = test_input($_POST['password']);
+			$pswd = password_hash($pswd, PASSWORD_BCRYPT);
+		}
 	}
 
 	function test_input($data)
