@@ -9,37 +9,6 @@
         <div align = "center">
                 <!--// Formulario de creación de usuario-->
                 <h3> Registro de nuevo usuario </h3><br>
-                <?php
-                    // Comprobación de campos obligatorios
-                    $nameErr = $emailErr = $pswdErr = "";
-                    $name = $email = $pswd = "";
-                    if ($_SERVER["REQUEST_METHOD"]=="POST")
-                    {
-                        if(empty($_POST['name']))
-                            $nameErr = "El campo Usuario es obligatorio";
-                        else
-                            $name = test_input($_POST['name']);
-
-                        if(empty($_POST['email']))
-                            $emailErr = "El campo Correo Electrónico es obligatorio";
-                        else
-                            $email = test_input($_POST['email']);
-
-                        if(empty($_POST['password']))
-                            $pswdErr = "El campo Contraseña es obligatorio";
-                        else
-                            $pswd = test_input($_POST['password']);
-                    }
-
-                    function test_input($data)
-                    {
-                        $data = trim($data);
-                        $data = stripslashes($data);
-                        $data = htmlspecialchars($data);
-                        return $data;
-                    }
-                ?>
-
                 <form action = "insert_user.php" method = "POST">
                     <p><span class="error">* Este campo es obligatorio</p>
                     Introduzca su nombre de usuario:
