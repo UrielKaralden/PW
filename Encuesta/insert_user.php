@@ -7,6 +7,27 @@
     error_reporting(E_ALL & ~E_NOTICE);
     // Resolución del formulario de la encuesta
 
+	// Comprobación de campos obligatorios
+	$nameErr = $emailErr = $pswdErr = "";
+	$name = $email = $pswd = "";
+	if ($_SERVER["REQUEST_METHOD"]=="POST")
+	{
+		if(empty($_POST['nombre']))
+			$nameErr = "El campo Usuario es obligatorio";
+		else
+			$name = test_input($_POST['nombre']);
+
+		if(empty($_POST['email']))
+			$emailErr = "El campo Correo Electrónico es obligatorio";
+		else
+			$email = test_input($_POST['email']);
+
+		if(empty($_POST['password']))
+			$pswdErr = "El campo Contraseña es obligatorio";
+		else
+			$pswd = test_input($_POST['password']);
+	}
+
 	function test_input($data)
 	{
 		$data = trim($data);
@@ -15,35 +36,31 @@
 		return $data;
 	}
 
-    session_start();
-	$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
-    mysqli_set_charset($conexion,"utf8");
-
-	$name = test_input($_POST['name']);
-	$email = test_input($_POST['email']);
-	$pswd = test_input($_POST['password']);
-
-    if (empty($name) || empty($email) || empty($pswd))
-    {
+    if (empty($name) && empty($email) && empty($pswd))
 	    echo"<script>alert('ERES INUTIL. APRENDE A ESCRIBIR');window.location='crear_usuario.php';</script>";
-	}
 	else
 	{
     	if($name == 'admin')
-        	$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', '$email', 1);";
-    	else
-        	$user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', '$email', 0);";
+			$value = 1;
+		else
+			$value = 0;
 
-		$result = mysqli_query($conexion, $user_query);
+		session_start();
+		$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
+		mysqli_set_charset($conexion,"utf8");
+        $user_query = "INSERT INTO usuarios (nombre, password, email, admin) VALUES ('$name', '$pswd', '$email', '$value');";
+		mysqli_query($conexion, $user_query);
+		header("Location: Login.html");
 		mysqli_close($conexion);
-
-		if(isset($result))
-			header("Location: Login.html");
 	}
 	/*
 	else
 		header("Location: crear_usuario.php");
 	*/
+
+	// Para dejar el autoincrement en el proximo valor
+	// Alter table $tabla autoincrement = $nuevo_valor;
+
 ?>
 </body>
 </html>
