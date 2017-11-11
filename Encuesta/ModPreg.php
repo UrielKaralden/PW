@@ -100,7 +100,21 @@
 				else
 					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
 			}
-			else{
+			if($action=="Eliminar"){
+				$result=mysqli_query("SELECT * from preguntas where nombre='$nombre' AND id_Seccion='$identificador'";);
+				if($row=$mysqli_fetch_array($result)){
+					$result=mysqli_query("DELETE FROM preguntas WHERE id=$row['id']");
+					if($result){
+						
+					}else
+						echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
+					exit();
+				}else{
+					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
+					exit();
+				}
+					
+			}else{
 				echo"<script>alert('Esa opcion no existe');window.location='crear_seccion.php';</alert>";
 				exit();
 			}
