@@ -4,6 +4,8 @@
 
 	$nameErr = $emailErr = $pswdErr = "";
 	$usuario = $email = $pswd = "";
+	if ($_SERVER["REQUEST_METHOD"]=="POST")
+	{
 		if(empty($_POST['user']))
 			$nameErr = "El campo Usuario es obligatorio";
 		else
@@ -13,6 +15,7 @@
 			$pswdErr = "El campo Contraseña es obligatorio";
 		else
 			$pswd = test_input($_POST['password']);
+	}
 
 	function test_input($data)
 	{
@@ -23,13 +26,9 @@
 	}
 
 	// Redireccion si los campos se encuentran vacíos
-	if(empty($usuario))
+	if(empty($usuario) && empty($pswd))
 	{
-		echo"<script>alert('No ha indicado un usuario.\n No sea vago y escriba.');window.location='Login.php';</script>";
-	}
-	else if(empty($pswd))
-	{
-		echo"<script>alert('No somos tan tontos como para dejar cuentas sin seguridad.\n Deje de hacer el canelo');window.location='Login.php';</script>";
+		 echo"<script>alert('Lamentamos informarle de que no ha rellenado todos los campos.\nPor favor, rellene todos los campos');window.location='Login.php';</script>";
 	}
 
 	$query = "SELECT * FROM usuarios WHERE nombre = '$usuario';";
@@ -41,7 +40,8 @@
 		echo "EL USUARIO ES CORRECTO, MOTHERFUCKER";
 		echo "<br><br>";
 
-		if(password_verify($users['password'], $pswd))
+
+		if(password_verify($pswd, $users['password']))
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
 			$_SESSION['usuario']=$users['nombre'];
@@ -53,13 +53,16 @@
 		}
 		else
 		{
-			echo"<script>alert('La contraseña introducida no es digna de mi aprobación);window.location='Login.html';</script>";
+			echo " LA CONTRASEÑA NO ES CORRECTA, MOTHERFUCKER \n";
+			echo "<br><br>";
+			//echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
 			exit();
 		}
 	}
 	else
 	{
-		echo"<script>alert('No sirves ni pa crear un usuario. Inútil.');window.location='Login.html';</script>";
+		echo "Fuera esssstupido";
+		//echo"<script>alert('Fuera Invasor 2');window.location='Login.html';</script>";
 		exit();
 	}
 ?>
