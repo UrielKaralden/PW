@@ -5,7 +5,7 @@
     <body>
         <div align = "center">
             <h3> Selección de Encuestas </h3>
-            Por favor seleccione la encuesta a la que desea acceder. <br>
+            Por favor seleccione la encuesta a la que desea acceder.
         </div>
         <div align = "center">
             <?php
@@ -69,6 +69,7 @@
                     //echo "<button type = \"submit\" value = \"Administrar\";";
                 echo "</form>";
                 //echo "$user_admin";*/
+                mysqli_close($conexion);
             ?>
         </div>
     </body>

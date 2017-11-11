@@ -4,21 +4,15 @@
     $name = $_POST['nombre'];
     $desc = $_POST['descripcion'];
     $estudio = $_SESSION['estudio'];
-    if($_SESSION['admin'] == true)
-        $user = 'encuesta_root';
-        $pass = "root_encuesta";
-    else
-    {
-        $user = 'cursophp';
-        $pass = "";
-    }
-    $conexion = mysqli_connect('localhost',"$user",
-        "$pass",'Encuesta_profesorado')
+
+    $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado')
         or die("Error al conectar " . mysqli_error());
 
-    $insertar_encuesta = "INSERT INTO Encuestas (id,nombre,descripcion,id_Estudio) VALUES
-    ('', $name, $descripcion, $estudio);";
+    $insertar_encuesta = "INSERT INTO Encuestas (nombre,descripcion,id_Estudio) VALUES
+    ('$name', '$descripcion', '$estudio');";
 
-    $resultado = mysqli_query($conexion, $insertar_encuesta);
-    echo"header(\"Location: index.php\")";
+    mysqli_query($conexion, $insertar_encuesta);
+    header("Location: select_encuesta.php");
+
+    mysqli_close($conexion);
 ?>
