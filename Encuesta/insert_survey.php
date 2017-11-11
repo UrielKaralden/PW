@@ -8,11 +8,12 @@
     $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado')
         or die("Error al conectar " . mysqli_error());
 
-    $insertar_encuesta = "INSERT INTO Encuestas (nombre,descripcion,id_Estudio) VALUES
-    ('$name', '$descripcion', '$estudio');";
-
-    mysqli_query($conexion, $insertar_encuesta);
-    header("Location: select_encuesta.php");
-
+    $insertar_encuesta = "INSERT INTO Encuestas (nombre,descripcion,id_Estudio) VALUES ('$name', '$descripcion', '$estudio');";
+    $resultado = mysqli_query($conexion, $insertar_encuesta);
+    if($resultado)
+        header("Location: select_encuesta.php");
+    else
+        echo "QUE NO TE ENTERAS,CONTRERAS, QUE NO HAY FRONTERAS NI CADENAS";
+        
     mysqli_close($conexion);
 ?>
