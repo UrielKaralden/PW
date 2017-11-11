@@ -1,7 +1,4 @@
 <?php
-	/* Inutil encriptar si no se almacena encriptada en la base de datos
-	$pswdHash = password_hash($pswd, PASSWORD_BCRYPT); */
-
 	session_start();
 	$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 
@@ -44,7 +41,8 @@
 		echo "EL USUARIO ES CORRECTO, MOTHERFUCKER";
 		echo "<br><br>";
 
-		if($users['password']==$pswd)
+
+		if(password_verify($users['password'], $pswd))
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
 			$_SESSION['usuario']=$users['nombre'];
