@@ -9,6 +9,7 @@
         </div>
         <div align = "center">
             <?php
+
                 define("ADMIN", 1);
                 error_reporting(E_ALL & ~E_NOTICE);
                 // Sessión con Mysql
@@ -62,7 +63,8 @@
                     ++$cont;
                     $nombre_encuesta = $iter_bucle['nombre'];
                     echo "$nombre_encuesta <input type = \"radio\" name = \"id_Encuesta[]\" value=\"$iter_bucle\">";
-                    echo "<input type = \"submit\" value = \"Seleccionar\">";
+                    echo "<pre>        </pre>";
+                    echo "<input type = \"submit\" value = \"Seleccionar\"><br>";
                 }
                 /*
                 if($user_admin == 1)
