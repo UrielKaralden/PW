@@ -1,6 +1,6 @@
 <?php
     // Funciones para el control de la sesion MySQL
-    function iniciate_session()
+    function initiate_session()
     {
         session_start();
         // No permitir un ID de sesión demasiado antiguo
@@ -11,14 +11,14 @@
         }
     }
 
-    function reset_session($user_nickname, $user_email, $user_permission)
+    function reset_session($user_nickname, $user_permission)
     {
         // Evitar colisiones creando el id mientras la sesión está activa
         if(session_status() != PHP_SESSION_ACTIVE)
         {
             session_start();
             $user_session = session_create_id($user_nickname);
-            $_SESSION['email'] = $user_email;
+            session_name($user_nickname);
             $_SESSION['admin'] = $user_permission;
             $_SESSION['deleted_time'] = time();
             session_commit();
