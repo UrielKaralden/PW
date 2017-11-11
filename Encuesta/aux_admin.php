@@ -2,27 +2,28 @@
 	session_start();
 	$conexion = mysqli_connect('localhost','root','','Encuesta_profesorado')
 	or die("Error al conectar " . mysqli_error());
-	echo $_POST['option'];
+	//echo $_POST['option'];
 	if(isset($_POST['option']))
 	{
 		$option_admin=$_POST['option'];
-		echo $option_admin;
+		//echo $option_admin;
 	}
 	if(isset($_POST['id_Encuesta']))
 	{
 		$survey_id = $_POST['id_Encuesta'];
-		echo $survey_id;
+		//echo $survey_id;
 	}
 
-	if($_POST['option']=='modificar')
+	if($option_admin=='modificar')
 	{
-		echo "<form method=\"POST\" action=\"crear_seccion.php\">";
-
+		echo "MUERE,INSECTO";
+		echo "<form method=\"POST\" action = \"crear_seccion.php\" id = \"modificar_encuesta\">";
 		echo "<input type=\"hidden\" name=\"id_Encuesta\" value= $survey_id />";
 		echo "</form>";
+		echo "<script type=\"text/javascript\">document.getElementById(\"modificar_encuesta\").submit()</script>";
 		exit();
 
-	}else if($_POST['option']=='eliminar')
+	}else if($option_admin=='eliminar')
 	{
 		for($iter_bucle = 0; $iter_bucle < $num_encuestas; ++$iter_bucle)
         {

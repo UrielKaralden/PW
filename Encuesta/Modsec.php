@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	$nombre=$_POST['nsection'];
 	$action=$_POST['modcre'];
 	$identificator=$_POST['iden'];
@@ -7,12 +9,15 @@
 		exit();
 	}
 	else{
-		mysqli_connect('localhost','root_encuesta','encuesta_root','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
+		$conexion = mysqli_connect('localhost','root_encuesta','encuesta_root','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
 		if($action=="Modificar"){
-			$result=mysqli_query("SELECT * from secciones where nombre='$nombre' and id_Encuesta='$identificator'";);
-			if($row=$mysqli_fecth_array($result)){
-				 echo "<form action = \"crear_pregunta.php\" method = \"POST\">
-				<input type = \"hidden\" name = \"id_section\" value = \"$row['id']\"><br>
+			$seccion_query = "SELECT * from secciones where nombre='$nombre' and id_Encuesta='$identificator';";
+			$result=mysqli_query($conexion, $seccion_query);
+			if($row= mysqli_fetch_array($result))
+			{
+				$section_id = $row['id'];
+				echo "<form action = \"crear_pregunta.php\" method = \"POST\">
+				<input type = \"hidden\" name = \"id_section\" value = $section_id><br>
 				</form>";
 				exit();
 			}else{
@@ -21,7 +26,8 @@
 			}
 		}else{
 			if($action=="Crear"){
-				$result = mysqli_query("INSERT INTO secciones(id,nombre,id_Encuesta) VALUES('', '$nombre','$identificator');");
+				$insert_section_query = "INSERT INTO secciones(id,nombre,id_Encuesta) VALUES('', '$nombre','$identificator');";
+				$result = mysqli_query($conexion, $insert_section_query);
 				if($result)
 					echo"<script>alert('Exito al crear');window.location='crear_seccion.php';</script>";
 				else
@@ -29,8 +35,11 @@
 				exit();
 			}else{
 				if($action=="Eliminar"){
-					$aux=mysqli_query("SELECT * from secciones where id_Encuesta='identificator'";);
-					if($row=$mysqli_fecth_array($result)){
+					$sections_id_query = "SELECT id from secciones where id_Encuesta='identificator';";
+					$sections_ids = mysqli_query($conexion, $sections_id_query);
+					$row = mysqli_fetch_assoc($sections_ids)
+					while($section_field = mysqli_fetch_field($row))
+					{
 						$identificador=$row['id'];
 						for($iter_bucle = 0; $iter_bucle < $num_encuestas; ++$iter_bucle)
 						{
