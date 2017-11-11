@@ -11,7 +11,7 @@
                 Introduzca una descripción de la encuesta:
                 <input type = "text" name = "descripcion"><br>
                 <button type = "submit">Crear</button>
-            </form>";
+            </form>
         </div>
     </body>
 </html>
