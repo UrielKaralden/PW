@@ -46,9 +46,10 @@
 		if($users['password']==$pswd)
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
-			$_SESSION['usuario']=$usuario;
+			$_SESSION['usuario']=$users['nombre'];
 			$_SESSION['admin']=$users['admin'];
-			$_SESSION['id_Estudio']=$users['id_Estudio'];
+			$_SESSION['estudio']=$users['id_Estudio'];
+
 			header("Location: select_encuesta.php");
 
 		}
