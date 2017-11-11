@@ -90,7 +90,7 @@
 						$select_ids_respuestas = mysqli_query($conexion, $select_ids_respuestas_query);
 						$respuestas_ids = mysqli_fetch_assoc($select_ids_respuestas);
 						$cont = 1;
-						while($r_row = mysqli_fetch_field($radio_respuestas_ids))
+						while($r_row = mysqli_fetch_field($respuestas_ids))
 						{
 							$r_old_id = $r_row['id'];
 							$update_r_query = "UPDATE respuestas SET id = '$cont' where respuestas.id = '$r_old_id';";
