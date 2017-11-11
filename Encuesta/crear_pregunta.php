@@ -11,7 +11,7 @@
 			<br />
             <input type="text" name="typequestion" placeholder="Indique el tipo de pregunta que desea hacer"/>
 			<br />
-			<input type="text" name="modcre" placeholder="Modificar o Crear"/>
+			<input type="text" name="modcre" placeholder="Modificar, Crear o Eliminar"/>
 			<br />
 			<?php
 			    echo"<input type=\"hidden\" name=\"iden\" value=$_POST['id_section'] />";
