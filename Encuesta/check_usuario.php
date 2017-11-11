@@ -41,7 +41,7 @@
 		echo "<br><br>";
 
 
-		if(password_verify($users['password'], $pswd))
+		if(password_verify($pswd, $users['password']))
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
 			$_SESSION['usuario']=$users['nombre'];
