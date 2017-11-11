@@ -53,6 +53,7 @@
                 $cont = 0;
                 while($iter_bucle = mysqli_fetch_assoc($muestra_consultas))
                 {
+                    $survey_id = $iter_bucle['id'];
                     // 1º Cambiamos el color del fondo de la tabla en funcion
                     // de la fila de la tabla
                     if($cont%2==0)
@@ -62,10 +63,9 @@
 
                     ++$cont;
                     $nombre_encuesta = $iter_bucle['nombre'];
-                    echo "$nombre_encuesta <input type = \"radio\" name = \"id_Encuesta[]\" value=\"$iter_bucle\">";
-                    echo "<pre>        </pre>";
-                    echo "<input type = \"submit\" value = \"Seleccionar\"><br>";
+                    echo "$nombre_encuesta <input type = \"radio\" name = \"id_Encuesta\" value=\"$survey_id\"><br><br>";
                 }
+                echo "<input type = \"submit\" value = \"Seleccionar\"><br>";
                 /*
                 if($user_admin == 1)
                     //echo "<button type = \"submit\" value = \"Administrar\";";
