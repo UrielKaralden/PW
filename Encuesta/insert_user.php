@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-    //error_reporting(E_ALL & ~E_NOTICE);
+    error_reporting(E_ALL & ~E_NOTICE);
     // Resolución del formulario de la encuesta
 
 	// Comprobación de campos obligatorios
