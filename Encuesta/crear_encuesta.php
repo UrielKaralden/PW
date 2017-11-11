@@ -4,17 +4,14 @@
     </head>
     <body>
         <div align = "center">
-            <?php
-            // Formulario de la encuesta
-                echo "<h3> Creación de una nueva encuesta </h3><br>
-                <form action = \"insert_survey.php\" method = \"POST\">
-                    Introduzca el nombre de la encuesta:
-                    <input type = \"text\" name = \"nombre\"><br>
-                    Introduzca una descripción de la encuesta:
-                    <input type = \"text\" name = \"descripcion\"><br>
-                    <button type = \"submit\">Crear</button>
-                </form>";
-            ?>
+            <h3> Creación de una nueva encuesta </h3><br>
+            <form action = "insert_survey.php" method = "POST">
+                Introduzca el nombre de la encuesta:
+                <input type = "text" name = "nombre"><br>
+                Introduzca una descripción de la encuesta:
+                <input type = "text" name = "descripcion"><br>
+                <button type = "submit">Crear</button>
+            </form>";
         </div>
     </body>
 </html>
