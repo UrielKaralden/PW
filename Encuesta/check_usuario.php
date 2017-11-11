@@ -41,7 +41,6 @@
 		echo "EL USUARIO ES CORRECTO, MOTHERFUCKER";
 		echo "<br><br>";
 
-
 		if(password_verify($users['password'], $pswd))
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
