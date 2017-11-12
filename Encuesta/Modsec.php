@@ -69,18 +69,25 @@
 							$select_ids_radio_respuestas = mysqli_query($conexion, $select_ids_radio_respuestas_query)
 								or die (mysqli_error($conexion));
 							$cont = 1;
-							while($rr_row = mysqli_fetch_assoc($select_ids_radio_respuestas))
-							{
-								$old_id = $rr_row['id'];
+							/*while($rr_row = mysqli_fetch_assoc($select_ids_radio_respuestas))
+							{*/
+								/*$old_id = $rr_row['id'];
 								$update_rr_query = "UPDATE radio_respuestas SET id = '$cont' where radio_respuestas.id = '$old_id';";
 								$update_rr = mysqli_query($conexion, $update_rr_query) or die (mysqli_error($conexion));
+								*/
+								$update_prerr_query = "ALTER TABLE radio_respuestas DROP id;";
+								$update_prerr=mysqli_query($conexion, $update_prerr_query) or die (mysqli_error($conexion));
+								$update_pre2rr_query= "ALTER TABLE radio_respuestas AUTO_INCREMENT =1;";
+								$update_pre2rr=mysqli_query($conexion, $update_pre2rr_query) or die (mysqli_error($conexion));
+								$update_rr_query="ALTER TABLE radio_respuestas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+								$update_rr=mysqli_query($conexion, $update_rr_query) or die (mysqli_error($conexion));
 								if($update_rr)
 									echo "RADIO RESPUESTAS ACTUALIZADAS CORRECTAMENTE <br>";
 								else
 								{
 									echo "MERECES LA MUERTE, YASUO <br>";
 								}
-							}
+							/*}*/
 						}
 						// Eliminamos las respuestas de esa pregunta
 						$delete_respuestas_query = "DELETE  FROM respuestas WHERE respuestas.id_Preguntas = '$pregunta_id';";
@@ -96,7 +103,7 @@
 						$select_ids_respuestas_query = "SELECT id FROM respuestas ORDER BY id asc;";
 						$select_ids_respuestas = mysqli_query($conexion, $select_ids_respuestas_query) or die (mysqli_error($conexion));
 						$cont = 1;
-						while($r_row = mysqli_fetch_assoc($select_ids_respuestas))
+						/*while($r_row = mysqli_fetch_assoc($select_ids_respuestas))
 						{
 							$r_old_id = $r_row['id'];
 							$update_r_query = "UPDATE respuestas SET id = '$cont' where respuestas.id = '$r_old_id';";
@@ -107,6 +114,18 @@
 							{
 								echo "MERECES LA MUERTE, LLOQUER<br>";
 							}
+						}*/
+						$update_prer_query = "ALTER TABLE respuestas DROP id;";
+						$update_prer=mysqli_query($conexion, $update_prer_query) or die (mysqli_error($conexion));
+						$update_pre2r_query= "ALTER TABLE respuestas AUTO_INCREMENT =1;";
+						$update_pre2r=mysqli_query($conexion, $update_pre2r_query) or die (mysqli_error($conexion));
+						$update_r_query="ALTER TABLE respuestas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+						$update_respuestas=mysqli_query($conexion, $update_r_query) or die (mysqli_error($conexion));
+						if($update_respuestas)
+							echo "RESPUESTA ACTUALIZADAS CORRECTAMENTE<br>";
+						else
+						{
+							echo "MERECES LA MUERTE, LLOQUER<br>";
 						}
 
 						// Eliminamos la pregunta en cuestion
@@ -127,7 +146,7 @@
 					$select_ids_preguntas = mysqli_query($conexion, $select_ids_preguntas_query) or die (mysqli_error($conexion));
 					$num_preguntas = mysqli_num_rows($select_ids_preguntas);
 					$cont = 1;
-					while($p_row = mysqli_fetch_assoc($select_ids_preguntas))
+					/*while($p_row = mysqli_fetch_assoc($select_ids_preguntas))
 					{
 						$p_old_id = $p_row['id'];
 						$new_id = $num_preguntas + $cont;
@@ -153,6 +172,18 @@
 								echo "MERECES LA MUERTE, WEBMASTER <br>";
 							}
 						}
+					}*/
+					$update_prep_query = "ALTER TABLE preguntas DROP id;";
+					$update_prep=mysqli_query($conexion, $update_prep_query) or die (mysqli_error($conexion));
+					$update_pre2p_query= "ALTER TABLE preguntas AUTO_INCREMENT =1;";
+					$update_pre2p=mysqli_query($conexion, $update_pre2p_query) or die (mysqli_error($conexion));
+					$update_p_query="ALTER TABLE preguntas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+					$update_preguntas=mysqli_query($conexion, $update_p_query) or die (mysqli_error($conexion));
+					if($update_preguntas)
+						echo "PREGUNTAS ACTUALIZADAS CORRECTAMENTE<br>";
+					else
+					{
+						echo "MERECES LA MUERTE, WEBMASTER<br>";
 					}
 					$delete_section_query = "DELETE  FROM secciones WHERE secciones.id = '$section_id';";
 					$delete_section = mysqli_query($conexion, $delete_section_query) or die (mysqli_error($conexion));
@@ -167,7 +198,7 @@
 					$select_ids_secciones = mysqli_query($conexion, $select_ids_secciones_query) or die (mysqli_error($conexion));
 					$num_secciones = mysqli_num_rows($select_ids_secciones);
 					$cont = 1;
-					$new_id = $num_secciones +$cont;
+					/*$new_id = $num_secciones +$cont;
 					while($s_row = mysqli_fetch_assoc($select_ids_secciones))
 					{
 						$s_old_id = $s_row['id'];
@@ -189,6 +220,18 @@
 								echo "MERECES LA MUERTE, ALEJANDRO <br>";
 							}
 						}
+					}*/
+					$update_pres_query = "ALTER TABLE secciones DROP id;";
+					$update_pres=mysqli_query($conexion, $update_pres_query) or die (mysqli_error($conexion));
+					$update_pre2s_query= "ALTER TABLE seccones AUTO_INCREMENT =1;";
+					$update_pre2s=mysqli_query($conexion, $update_pre2s_query) or die (mysqli_error($conexion));
+					$update_s_query="ALTER TABLE secciones ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+					$update_s=mysqli_query($conexion, $update_s_query) or die (mysqli_error($conexion));
+					if($update_s)
+						echo "SECCIONES ACTUALIZADAS CORRECTAMENTE <br>";
+					else
+					{
+						echo "MERECES LA MUERTE, ALEJANDRO <br>";
 					}
 				}else{
 					echo"<script>alert('Esa opcion no existe');window.location='crear_seccion.php';</alert>";
