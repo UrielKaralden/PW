@@ -240,9 +240,11 @@
 					{
 						echo "MERECES LA MUERTE, ALEJANDRO <br>";
 					}
-				}else{
-					echo"<script>alert('Esa opcion no existe');window.location='crear_seccion.php';</alert>";
-					exit();
+
+					echo"<form action = \"crear_seccion.php\" method = \"post\" id = \"seccion_eliminada\">
+						<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\">
+						</form>";
+					echo "<script type=\"text/javascript\">document.getElementById(\"seccion_eliminada\").submit()</script>";
 				}
 			}
 		}
