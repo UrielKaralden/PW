@@ -16,9 +16,12 @@
 			if($row= mysqli_fetch_array($result))
 			{
 				$section_id = $row['id'];
-				echo "<form action = \"crear_pregunta.php\" method = \"POST\">
-				<input type = \"hidden\" name = \"id_section\" value = $section_id><br>
+				echo "<form action = \"crear_pregunta.php\" method = \"POST\" id = \"modificar_seccion\">
+				<input type = \"hidden\" name = \"id_section\" value = \"$section_id\"><br>
+				<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
 				</form>";
+				echo "<script type=\"text/javascript\">document.getElementById(\"modificar_seccion\").submit()</script>";
+
 				exit();
 			}else{
 				echo"<script>alert('No existe seccion');window.location='crear_seccion.php';</script>";
@@ -77,10 +80,11 @@
 								*/
 								$update_prerr_query = "ALTER TABLE radio_respuestas DROP id;";
 								$update_prerr=mysqli_query($conexion, $update_prerr_query) or die (mysqli_error($conexion));
-								$update_pre2rr_query= "ALTER TABLE radio_respuestas AUTO_INCREMENT =1;";
-								$update_pre2rr=mysqli_query($conexion, $update_pre2rr_query) or die (mysqli_error($conexion));
 								$update_rr_query="ALTER TABLE radio_respuestas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
 								$update_rr=mysqli_query($conexion, $update_rr_query) or die (mysqli_error($conexion));
+								$update_pre2rr_query= "ALTER TABLE radio_respuestas AUTO_INCREMENT =1;";
+								$update_pre2rr=mysqli_query($conexion, $update_pre2rr_query) or die (mysqli_error($conexion));
+
 								if($update_rr)
 									echo "RADIO RESPUESTAS ACTUALIZADAS CORRECTAMENTE <br>";
 								else
@@ -117,10 +121,10 @@
 						}*/
 						$update_prer_query = "ALTER TABLE respuestas DROP id;";
 						$update_prer=mysqli_query($conexion, $update_prer_query) or die (mysqli_error($conexion));
-						$update_pre2r_query= "ALTER TABLE respuestas AUTO_INCREMENT =1;";
-						$update_pre2r=mysqli_query($conexion, $update_pre2r_query) or die (mysqli_error($conexion));
 						$update_r_query="ALTER TABLE respuestas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
 						$update_respuestas=mysqli_query($conexion, $update_r_query) or die (mysqli_error($conexion));
+						$update_pre2r_query= "ALTER TABLE respuestas AUTO_INCREMENT =1;";
+						$update_pre2r=mysqli_query($conexion, $update_pre2r_query) or die (mysqli_error($conexion));
 						if($update_respuestas)
 							echo "RESPUESTA ACTUALIZADAS CORRECTAMENTE<br>";
 						else
@@ -175,10 +179,12 @@
 					}*/
 					$update_prep_query = "ALTER TABLE preguntas DROP id;";
 					$update_prep=mysqli_query($conexion, $update_prep_query) or die (mysqli_error($conexion));
-					$update_pre2p_query= "ALTER TABLE preguntas AUTO_INCREMENT =1;";
-					$update_pre2p=mysqli_query($conexion, $update_pre2p_query) or die (mysqli_error($conexion));
+
 					$update_p_query="ALTER TABLE preguntas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
 					$update_preguntas=mysqli_query($conexion, $update_p_query) or die (mysqli_error($conexion));
+					$update_pre2p_query= "ALTER TABLE preguntas AUTO_INCREMENT =1;";
+					$update_pre2p=mysqli_query($conexion, $update_pre2p_query) or die (mysqli_error($conexion));
+
 					if($update_preguntas)
 						echo "PREGUNTAS ACTUALIZADAS CORRECTAMENTE<br>";
 					else
@@ -223,10 +229,11 @@
 					}*/
 					$update_pres_query = "ALTER TABLE secciones DROP id;";
 					$update_pres=mysqli_query($conexion, $update_pres_query) or die (mysqli_error($conexion));
-					$update_pre2s_query= "ALTER TABLE seccones AUTO_INCREMENT =1;";
-					$update_pre2s=mysqli_query($conexion, $update_pre2s_query) or die (mysqli_error($conexion));
 					$update_s_query="ALTER TABLE secciones ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
 					$update_s=mysqli_query($conexion, $update_s_query) or die (mysqli_error($conexion));
+					$update_pre2s_query= "ALTER TABLE secciones AUTO_INCREMENT =1;";
+					$update_pre2s=mysqli_query($conexion, $update_pre2s_query) or die (mysqli_error($conexion));
+
 					if($update_s)
 						echo "SECCIONES ACTUALIZADAS CORRECTAMENTE <br>";
 					else
