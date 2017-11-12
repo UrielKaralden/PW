@@ -2,14 +2,14 @@
 	session_start();
 
 	$nombre=$_POST['nsection'];
-	$action=$_POST['modcre'];
+	$action=$_POST['option'];
 	$identificator=$_POST['iden'];
 	if(empty($nombre) && empty($action)){
 		echo"<script>alert('Campos Vacios');window.location='crear_seccion.php';</script>";
 		exit();
 	}
 	else{
-		$conexion = mysqli_connect('localhost','root_encuesta','encuesta_root','Encuesta_profesorado')or die("Error al conectar " . mysqli_error());
+		$conexion = mysqli_connect('localhost','root','','Encuesta_profesorado')or die("Error al conectar " . mysqli_error($conexion));
 		if($action=="Modificar"){
 			$seccion_query = "SELECT * from secciones where nombre='$nombre' and id_Encuesta='$identificator';";
 			$result=mysqli_query($conexion, $seccion_query);
@@ -26,10 +26,16 @@
 			}
 		}else{
 			if($action=="Crear"){
-				$insert_section_query = "INSERT INTO secciones(id,nombre,id_Encuesta) VALUES('', '$nombre','$identificator');";
+				$insert_section_query = "INSERT INTO secciones(id_Encuesta,nombre) VALUES('$identificator','$nombre');";
 				$result = mysqli_query($conexion, $insert_section_query);
 				if($result)
-					echo"<script>alert('Exito al crear');window.location='crear_seccion.php';</script>";
+				{
+					echo"<script>alert('Exito al crear');window.location='Modsec.php';</script>";
+					echo"<form action = \"crear_seccion.php\" method = \"post\" id = \"seccion_creada\">
+						<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\">
+						</form>";
+					echo "<script type=\"text/javascript\">document.getElementById(\"seccion_creada\").submit()</script>";
+				}
 				else
 					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
 				exit();
@@ -131,11 +137,6 @@
 						{
 							echo "MERECES LA MUERTE, WEBMASTER";
 						}
-					}
-					else
-					{
-						echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</alert>";
-						exit();
 					}
 				}else{
 					echo"<script>alert('Esa opcion no existe');window.location='crear_seccion.php';</alert>";
