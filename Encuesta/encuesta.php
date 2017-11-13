@@ -40,9 +40,9 @@
 									{
 										$texto_respuesta = $respuesta['texto'];
 										if($first_radio)
-											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\" checked><br>";
+											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto_respuesta\" checked><br>";
 										else
-											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br>";
+											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto_respuesta\"><br>";
 										$first_radio = false;
 									}
 									$first_radio = true;
