@@ -1,22 +1,11 @@
 <?php
 
-    $pregunta = $_POST['nquestion'];
-    $tipo = $_POST['typequestion'];
-    $opcion = $_POST['modcre'];
-    $section = $_POST['iden'];
+    $pregunta = $_POST['question'];
+    $tipo = $_POST['type_option'];
+    $opcion = $_POST['option'];
+    $section = $_POST['id_section'];
+    $survey = $_POST['id_encuesta'];
 
-    if($opcion == 'Modificar')
-    {
-        echo "<form action = \"ModPreg.php\" method = \"POST\">
-        <input type=\"text\" name=\"col_mod\" placeholder=\"Dato a modificar\"/><br>
-        <input type=\"text\" name=\"modification\" placeholder=\"Modificación\"/><br>
-        <input type=\"hidden\" name=\"nquestion\" value=\"$pregunta\">
-        <input type=\"hidden\" name=\"typequestion\" value=\"$tipo\">
-        <input type=\"hidden\" name=\"modcre\" value=\"$opcion\">
-        <input type=\"hidden\" name=\"iden\" value=\"$section\">
-        <button type=\"submit\">Modificar</button>
-        </form>";
-    }
     else if($opcion == 'Crear')
     {
         if($tipo == 'radio')
@@ -28,11 +17,12 @@
             <input type=\"text\" name=\"resp_4\" placeholder=\"Respuesta 4\"/><br>
             <input type=\"text\" name=\"resp_5\" placeholder=\"Respuesta 5\"/><br>
             <input type=\"text\" name=\"resp_6\" placeholder=\"Respuesta 6\"/><br>
-            <input type=\"hidden\" name=\"nquestion\" value=\"$pregunta\">
-            <input type=\"hidden\" name=\"typequestion\" value=\"$tipo\">
-            <input type=\"hidden\" name=\"modcre\" value=\"$opcion\">
-            <input type=\"hidden\" name=\"iden\" value=\"$section\">
-            <button type=\"submit\">Modificar</button>
+            <input type=\"hidden\" name=\"question\" value=\"$pregunta\">
+            <input type=\"hidden\" name=\"type_option\" value=\"$tipo\">
+            <input type=\"hidden\" name=\"option\" value=\"$opcion\">
+            <input type=\"hidden\" name=\"id_section\" value=\"$section\">
+            <input type=\"hidden\" name=\"id_encuesta\" value=\"$survey\">
+            <button type=\"submit\">Crear pregunta</button>
             </form>";
         }
     }

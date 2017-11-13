@@ -25,23 +25,21 @@
 
 	}else if($option_admin=='eliminar')
 	{
-		for($iter_bucle = 0; $iter_bucle < $num_encuestas; ++$iter_bucle)
-        {
-			$result_array = mysqli_query("SELECT * from secciones where id='$iter_bucle' AND id_Encuesta='$iden'");
-			$row = mysqli_fetch_assoc($result_array);
-			$section_name = $row['nombre'];
-			echo "<form method=\"POST\" action=\"Modsec.php\">";
-			echo "<input type=\"hidden\" name=\"nsection\" value=\"$section_name\"/>";
-			echo "<input type=\"hidden\" name=\"modcre\" value=\"Eliminar\"/>";
-			echo "<input type=\"hidden\" name=\"iden\" value=$survey_id/>";
-		}
-		mysqli_close($conexion);
+	/*Eliminar encuesta*/
+		echo"Aquí se debe eliminar la encuesta";
+		echo "<input type=\"hidden\" name=\"id_Encuesta\" value= $survey_id />";
+		echo "</form>";
+		echo "<script type=\"text/javascript\">document.getElementById(\"modificar_envisualizar_encuestacuesta\").submit()</script>";
+		exit();
 	}
-	/*
-	else
+	else if ($option_admin == 'visualizar')
 	{
-		mysqli_close($conexion);
-		//echo"<script>alert('Opcion no válida');window.location='Login.html';</script>";
+		echo "<form method=\"POST\" action = \"encuesta.php\" id = \"visualizar_encuesta\">";
+		echo "<input type=\"hidden\" name=\"id_Encuesta\" value= $survey_id />";
+		echo "</form>";
+		echo "<script type=\"text/javascript\">document.getElementById(\"visualizar_encuesta\").submit()</script>";
+		exit();
 	}
-	*/
+
+	mysqli_close($conexion);
 ?>

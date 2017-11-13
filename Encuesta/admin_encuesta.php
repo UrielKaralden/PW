@@ -11,8 +11,9 @@
         </div>
 		<center>
 		<form method="POST" action="aux_admin.php">
-			<?php 
-			echo "Modificar encuesta<input type=\"radio\" name=\"option\" value = \"modificar\" checked><br><br>
+			<?php
+			echo "Visualizar encuesta<input type=\"radio\" name=\"option\" value = \"visualizar\" checked><br><br>
+			Modificar encuesta<input type=\"radio\" name=\"option\" value = \"modificar\"><br><br>
 			Eliminar encuesta<input type = \"radio\" name = \"option\" value = \"eliminar\"><br><br>";
 			?>
 			<!--

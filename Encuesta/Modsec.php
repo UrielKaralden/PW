@@ -21,10 +21,13 @@
 				<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
 				</form>";
 				echo "<script type=\"text/javascript\">document.getElementById(\"modificar_seccion\").submit()</script>";
-
 				exit();
 			}else{
-				echo"<script>alert('No existe seccion');window.location='crear_seccion.php';</script>";
+				echo"<script>alert('No existe seccion');window.location='crear_pregunta.php';</script>";
+				echo "<form action = \"crear_seccion.php\" method = \"POST\" id = \"error_mod_seccion\">
+				<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
+				</form>";
+				echo "<script type=\"text/javascript\">document.getElementById(\"error_mod_seccion\").submit()</script>";
 				exit();
 			}
 		}else{
@@ -41,6 +44,10 @@
 				}
 				else
 					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
+					echo "<form action = \"crear_pregunta.php\" method = \"POST\" id = \"error_mod_seccion_2\">
+					<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
+					</form>";
+					echo "<script type=\"text/javascript\">document.getElementById(\"error_mod_seccion_2\").submit()</script>";
 				exit();
 			}else{
 				if($action=="Eliminar"){
