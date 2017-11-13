@@ -30,7 +30,7 @@
 								$id_pregunta = $pregunta['id'];
 								$tipo = $pregunta['tipo_pregunta'];
 								$texto = $pregunta['pregunta'];
-
+								$first_radio = true;
 								echo "<br>$texto<br><br>";
 								if($tipo == 'radio')
 								{
@@ -39,8 +39,13 @@
 									while($respuesta = mysqli_fetch_assoc($respuestas_result))
 									{
 										$texto_respuesta = $respuesta['texto'];
-										echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br>";
+										if($first_radio)
+											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\" checked><br>";
+										else
+											echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br>";
+										$first_radio = false;
 									}
+									$first_radio = true;
 								}
 								else
 								{
@@ -48,7 +53,7 @@
 								}
 							}
 						}
-						echo "<textarea id = \"Observations\" name = \"Observaciones\" rows = \"10\" cols = \"70\">Puede indicar aquí cualquier observación si lo desea.</textarea>";
+						echo "<br><br> <textarea id = \"Observations\" name = \"Observaciones\" rows = \"10\" cols = \"70\" placeholder = \"Puede indicar aquí cualquier observación si lo desea.\"></textarea>";
 					?>
 					<br><br><button type = "submit">Enviar respuestas</button><br>
 				</form>
