@@ -19,6 +19,7 @@
 			Pregunta de texto<input type="radio" name="type_option" value = "text" checked><br><br>
 			Pregunta numérica<input type="radio" name="type_option" value = "number" ><br><br>
 			Pregunta de respuesta única<input type="radio" name="type_option" value = "radio" ><br><br>
+			Recuadro de texto<input type="radio" name="type_option" value = "textarea" ><br><br>
 			<!--Pregunta de respuesta mútiple<input type="radio" name="type_option" value = "radio" ><br><br><br>-->
 			<h4>Operación a realizar</h4>
 			Crear pregunta<input type="radio" name="option" value = "Crear" checked><br><br>

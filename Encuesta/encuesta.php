@@ -47,13 +47,17 @@
 									}
 									$first_radio = true;
 								}
+								else if($tipo == 'textarea')
+								{
+									echo "<textarea id = \"text_area\ name = \"$id_pregunta\" rows=\"10\" cols = \"70\" placeholder = \"$texto\"></textarea>";
+								}
 								else
 								{
 									echo "<input type = \"$tipo\" name = \"$id_pregunta\" placeholder = \"Responda aquí\"><br><br>";
 								}
 							}
 						}
-						echo "<br><br> <textarea id = \"Observations\" name = \"Observaciones\" rows = \"10\" cols = \"70\" placeholder = \"Puede indicar aquí cualquier observación si lo desea.\"></textarea>";
+						echo "<input type = \"hidden\" name = \"id_Encuesta\" value = \"$survey_id\">";
 					?>
 					<br><br><button type = "submit">Enviar respuestas</button><br>
 				</form>

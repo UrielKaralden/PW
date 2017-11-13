@@ -43,12 +43,14 @@
 					echo "<script type=\"text/javascript\">document.getElementById(\"seccion_creada\").submit()</script>";
 				}
 				else
+				{
 					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo');window.location='crear_seccion.php';</script>";
 					echo "<form action = \"crear_pregunta.php\" method = \"POST\" id = \"error_mod_seccion_2\">
 					<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
 					</form>";
 					echo "<script type=\"text/javascript\">document.getElementById(\"error_mod_seccion_2\").submit()</script>";
-				exit();
+					exit();
+				}
 			}else{
 				if($action=="Eliminar"){
 					$section_id_query = "SELECT id from secciones where nombre='$nombre';";
@@ -101,7 +103,7 @@
 							/*}*/
 						}
 						// Eliminamos las respuestas de esa pregunta
-						$delete_respuestas_query = "DELETE  FROM respuestas WHERE respuestas.id_Preguntas = '$pregunta_id';";
+						$delete_respuestas_query = "DELETE  FROM respuestas WHERE respuestas.id_Pregunta = '$pregunta_id';";
 						$delete_respuestas = mysqli_query($conexion, $delete_respuestas_query) or die (mysqli_error($conexion));
 						if($delete_respuestas)
 							echo "RESPUESTAS ELIMINADAS CORRECTAMENTE <br>";

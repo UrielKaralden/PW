@@ -32,7 +32,7 @@
 	}
 
 	$query = "SELECT * FROM usuarios WHERE nombre = '$usuario';";
-	$result = mysqli_query($conexion, $query);
+	$result = mysqli_query($conexion, $query) or die(mysqli_error($conexion));
 	$users =  mysqli_fetch_assoc($result);
 	$user_data = $users['nombre'];
 	if($user_data == $usuario)
@@ -45,6 +45,7 @@
 		{
 			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
 			$_SESSION['usuario']=$users['nombre'];
+			$_SESSION['email']=$users['email'];
 			$_SESSION['admin']=$users['admin'];
 			$_SESSION['estudio']=$users['id_Estudio'];
 
