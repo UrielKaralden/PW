@@ -69,7 +69,7 @@
 							exit();
 						}
 						else {
-							echo"<script>alert('Sus respuestas han sido almacenadas. \nGracias por participar');;window.location='select_encuesta.php';</script>";
+							echo"<script>alert('Sus respuestas han sido almacenadas. \nGracias por participar');window.location='select_encuesta.php';</script>";
 							exit();
 						}
 					}
