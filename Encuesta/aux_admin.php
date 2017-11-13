@@ -163,7 +163,7 @@
 	}
 	else if ($option_admin == 'analizar')
 	{
-		$pagina_analisis_encuesta = //Poner aqui la pagina PHP o HTML
+		$pagina_analisis_encuesta = 'nada';//Poner aqui la pagina PHP o HTML
 		echo "<form method=\"POST\" action = \"$pagina_analisis_encuesta\" id = \"analizar_encuesta\">";
 		echo "<input type=\"hidden\" name=\"id_Encuesta\" value= $survey_id />";
 		echo "</form>";

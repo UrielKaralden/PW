@@ -31,7 +31,7 @@
 								$tipo = $pregunta['tipo_pregunta'];
 								$texto = $pregunta['pregunta'];
 
-								echo "$texto<br>";
+								echo "<br>$texto<br><br>";
 								if($tipo == 'radio')
 								{
 									$respuestas_query = "SELECT * FROM radio_respuestas WHERE id_Pregunta = '$id_pregunta';";
@@ -39,7 +39,7 @@
 									while($respuesta = mysqli_fetch_assoc($respuestas_result))
 									{
 										$texto_respuesta = $respuesta['texto'];
-										echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br><br>";
+										echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br>";
 									}
 								}
 								else
@@ -48,10 +48,12 @@
 								}
 							}
 						}
+						echo "<textarea id = \"Observations\" name = \"Observaciones\" rows = \"10\" cols = \"70\">Puede indicar aquí cualquier observación si lo desea.</textarea>";
 					?>
+					<br><br><button type = "submit">Enviar respuestas</button><br>
 				</form>
 				<form action = "select_encuesta.php" method = "POST">
-	                <button type = "submit">Volver</button>
+	                <br><br><button type = "submit">Volver</button><br>
 	            </form>
 				<?php
 					include "pie.html";

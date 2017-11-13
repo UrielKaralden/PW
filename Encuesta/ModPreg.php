@@ -133,10 +133,11 @@
 						echo "$r6 <br>";
 					}
 				}
-
-				$insert_pregunta = "INSERT INTO preguntas(id_Seccion, tipo_pregunta, pregunta) VALUES
-				($id_section,'$tipo','$nombre');";
-				$insert_pregunta_result = mysqli_query($conexion, $insert_pregunta)or die("Error al conectar " . mysqli_error($conexion));
+				else
+				{
+					$insert_pregunta = "INSERT INTO preguntas(id_Seccion, tipo_pregunta, pregunta) VALUES
+					($id_section,'$tipo','$nombre');";
+					$insert_pregunta_result = mysqli_query($conexion, $insert_pregunta)or die("Error al conectar " . mysqli_error($conexion));
 
 				/*if(empty($id_Pregunta))
 				{
@@ -146,7 +147,7 @@
 					++$id_Pregunta;
 				}*/
 
-
+				}
 				if($insert_pregunta_result)
 				{
 					echo"<script>alert('Exito al crear')</script>";
