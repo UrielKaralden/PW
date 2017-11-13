@@ -6,7 +6,7 @@
     $section = $_POST['id_section'];
     $survey = $_POST['id_encuesta'];
 
-    else if($opcion == 'Crear')
+    if($opcion == 'Crear')
     {
         if($tipo == 'radio')
         {

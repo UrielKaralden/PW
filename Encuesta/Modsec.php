@@ -23,7 +23,7 @@
 				echo "<script type=\"text/javascript\">document.getElementById(\"modificar_seccion\").submit()</script>";
 				exit();
 			}else{
-				echo"<script>alert('No existe seccion');window.location='crear_pregunta.php';</script>";
+				echo"<script>alert('No existe seccion');window.location='crear_seccion.php';</script>";
 				echo "<form action = \"crear_seccion.php\" method = \"POST\" id = \"error_mod_seccion\">
 				<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
 				</form>";
@@ -56,7 +56,7 @@
 					$section_assoc = mysqli_fetch_assoc($section_id_result);
 					$section_id = $section_assoc['id'];
 
-					$preguntas_query = "SELECT * FROM preguntas WHERE id_Secciones = '$section_id';";
+					$preguntas_query = "SELECT * FROM preguntas WHERE id_Seccion = '$section_id';";
 					$preguntas_object = mysqli_query($conexion, $preguntas_query)or die (mysqli_error($conexion));
 					while($row = mysqli_fetch_assoc($preguntas_object))
 					{

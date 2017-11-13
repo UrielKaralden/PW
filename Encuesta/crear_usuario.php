@@ -1,6 +1,7 @@
 <html>
     <head>
         <title> Registro de usuario </title>
+        <meta charset="UTF-8">
     </head>
     <style>
         .error {color: #FF0000;}

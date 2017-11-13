@@ -3,6 +3,7 @@
 		<title>
 			Editar Sección
 		</title>
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		<div align = "center">

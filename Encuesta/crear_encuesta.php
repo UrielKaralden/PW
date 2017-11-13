@@ -1,6 +1,7 @@
 <html>
     <head>
         <title> Creación de Encuestas </title>
+        <meta charset="UTF-8">
     </head>
     <body>
         <div align = "center">

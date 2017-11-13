@@ -3,6 +3,7 @@
 		<title>
 			Editar Pregunta
 		</title>
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		<div align = "center">
@@ -11,7 +12,7 @@
 			el tipo de pregunta y la operación a realizar.<br><br><br>
         </div>
 		<center>
-		<form method="POST" action="ModPreg.php">
+		<form method="POST" action="aux_pregunta.php">
 			<h4>Introduzca el texto de la pregunta</h4>
 			<input type="text" name="question" placeholder="Texto de pregunta"/><br><br><br>
 			<h4>Tipo de pregunta</h4>

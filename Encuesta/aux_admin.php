@@ -30,7 +30,7 @@
 		$section_id_result = mysqli_query($conexion, $section_id_query)or die (mysqli_error($conexion));
 		while($section_assoc = mysqli_fetch_assoc($section_id_result)){
 			$section_id = $section_assoc['id'];
-			$preguntas_query = "SELECT * FROM preguntas WHERE id_Secciones = '$section_id';";
+			$preguntas_query = "SELECT * FROM preguntas WHERE id_Seccion = '$section_id';";
 			$preguntas_object = mysqli_query($conexion, $preguntas_query)or die (mysqli_error($conexion));
 			while($row = mysqli_fetch_assoc($preguntas_object))
 			{
@@ -103,7 +103,7 @@
 			$update_pre2p_query= "ALTER TABLE preguntas AUTO_INCREMENT =1;";
 			$update_pre2p=mysqli_query($conexion, $update_pre2p_query) or die (mysqli_error($conexion));
 
-			if($update_preguntas)	
+			if($update_preguntas)
 				echo "PREGUNTAS ACTUALIZADAS CORRECTAMENTE<br>";
 			else
 			{
@@ -140,21 +140,17 @@
 		if(isset($delete_encuesta))
 			echo "ENCUESTA ELIMINADA CORRECTAMENTE <br>";
 		else{
-			echo "MERECES LA MUERTE SANTI"
+			echo "MERECES LA MUERTE SANTI";
 		}
-		$update_en_query = "ALTER TABLE encuesta DROP id;";
+		$update_en_query = "ALTER TABLE encuestas DROP id;";
 		$update_en=mysqli_query($conexion, $update_en_query) or die (mysqli_error($conexion));
-		$update_en2_query="ALTER TABLE encuesta ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
+		$update_en2_query="ALTER TABLE encuestas ADD id int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;";
 		$update_en2=mysqli_query($conexion, $update_en2_query) or die (mysqli_error($conexion));
-		$update_en3_query= "ALTER TABLE encuesta AUTO_INCREMENT =1;";
+		$update_en3_query= "ALTER TABLE encuestas AUTO_INCREMENT =1;";
 		$update_en3=mysqli_query($conexion, $update_en3_query) or die (mysqli_error($conexion));
-		echo"<form action = \"crear_seccion.php\" method = \"post\" id = \"seccion_eliminada\">
-		<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\">
-		</form>";
-		echo "<script type=\"text/javascript\">document.getElementById(\"seccion_eliminada\").submit()</script>";
-		echo "<form action = \"crear_encuesta.php\" method = \"post\" id = \"modificar_envisualizar_encuestacuesta\">";
+		echo "<form action = \"select_encuesta.php\" method = \"post\" id = \"eliminar_encuesta\">";
 		echo "</form>";
-		echo "<script type=\"text/javascript\">document.getElementById(\"modificar_envisualizar_encuestacuesta\").submit()</script>";
+		echo "<script type=\"text/javascript\">document.getElementById(\"eliminar_encuesta\").submit()</script>";
 		exit();
 	}
 	else if ($option_admin == 'visualizar')

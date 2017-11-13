@@ -3,6 +3,8 @@
 		<title>
 			Encuesta de Satisfacción
 		</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	</head>
 	<body>
 		<div>
@@ -11,56 +13,43 @@
                     <?php
                         session_start();
 						$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
-                        $id_encuesta = $_POST['id_Encuesta'];
-
-						$secciones_query = "Select id from secciones where id_Encuesta = $id_encuesta;";
-						$secciones_encuesta = mysqli_query($conexion, $secciones_query);
-						$preguntas_query = "Select * from preguntas where id_Secciones = $secciones_encuesta order by id,id_Secciones asc;";
-						$preguntas = mysqli_query($conexion, $preguntas_query);
-
-						echo "<table border = 1>";
-		                echo "<div align=center>\n";
-
-						//mysqli_fetch_array
-						//mysqli_fetch_field Próxima tupla
-						//Sustituir bucle por fetch
-						while($next_question = mysqli_fetch_field($preguntas))
+						include "encabezado.php";
+						$survey_id = $_POST['id_Encuesta'];
+						$secciones_encuesta_query = "SELECT * FROM secciones WHERE id_Encuesta = '$survey_id';";
+						$secciones_encuesta_result = mysqli_query($conexion, $secciones_encuesta_query) or die(mysqli_error($conexion));
+						while($seccion_encuesta = mysqli_fetch_assoc($secciones_encuesta_result))
 						{
-		                  // 1º Cambiamos el color del fondo de la tabla en funcion
-		                  // de la fila de la tabla
-		                	if($iter_bucle%2==0)
-		                      echo "<tr bgcolor=#bdc3d6>\n";
-		                	else
-		                      echo "<tr>\n";
+							$actual_section_id = $seccion_encuesta['id'];
+							$actual_section_text = $seccion_encuesta['nombre'];
+							echo "<h4> Sección $actual_section_id: $actual_section_text </h4>";
 
-							$num = $next_question->id;
-							$section = $next_question->id_Secciones;
-							$question_type = $next_question->tipo;
-							$texto = $next_question->pregunta;
-
-							echo "$texto<br>";
-							if ($question_type == 'radio')
+							$preguntas_seccion_actual_query = "SELECT * FROM preguntas WHERE id_Seccion = '$actual_section_id';";
+							$preguntas_seccion_actual = mysqli_query($conexion, $preguntas_seccion_actual_query) or die(mysqli_error($conexion));
+							while($pregunta = mysqli_fetch_assoc($preguntas_seccion_actual))
 							{
-								$respuestas_query = "Select * from radio_respuestas where id_Pregunta = $num";
-								$respuestas = mysqli_query($conexion, $respuestas_query);
-								while($info = mysqli_fecth_field($respuestas));
+								$id_pregunta = $pregunta['id'];
+								$tipo = $pregunta['tipo_pregunta'];
+								$texto = $pregunta['pregunta'];
+
+								echo "$texto<br>";
+								if($tipo == 'radio')
 								{
-									echo "$info->texto";
-									echo "<input type = \"$question_type\" name = \"respuestas[]\"><br>";
+									$respuestas_query = "SELECT * FROM radio_respuestas WHERE id_Pregunta = '$id_pregunta';";
+									$respuestas_result = mysqli_query($conexion, $respuestas_query) or die(mysqli_error($conexion));
+									while($respuesta = mysqli_fetch_assoc($respuestas_result))
+									{
+										$texto_respuesta = $respuesta['texto'];
+										echo "$texto_respuesta <input type = \"$tipo\" name = \"$id_pregunta\" value = \"$texto\"><br><br>";
+									}
+								}
+								else
+								{
+									echo "<input type = \"$tipo\" name = \"$id_pregunta\" placeholder = \"Responda aquí\"><br><br>";
 								}
 							}
-							else
-							{
-								echo "<input type = \"$question_type\" name = \"respuestas[]\" placeholder=\"Responda aqui\"/><br><br>";
-							}
-							echo "<input type = \"hidden\" name = \"ids_pregunta[]\" value = \"$num\">";
-		                }
-						/*
-	                    Como incluir comentario en la encuesta*/
-	                    echo "<textarea name=\"comment\" rows=\"5\" cols=\"40\" placeholder = \"Observaciones\"></textarea>
-
-						echo "<button type=\"submit\">Enviar respuestas</button><br>";
-                    ?>
+						}
+						include "pie.html";
+					?>
 				</form>
 			</center>
 		</div>
