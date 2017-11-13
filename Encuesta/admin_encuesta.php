@@ -14,7 +14,8 @@
 			<?php
 			echo "Visualizar encuesta<input type=\"radio\" name=\"option\" value = \"visualizar\" checked><br><br>
 			Modificar encuesta<input type=\"radio\" name=\"option\" value = \"modificar\"><br><br>
-			Eliminar encuesta<input type = \"radio\" name = \"option\" value = \"eliminar\"><br><br>";
+			Eliminar encuesta<input type = \"radio\" name = \"option\" value = \"eliminar\"><br><br>
+			Realizar análisis estadístico<input type = \"radio\" name = \"option\" value = \"analizar\"><br><br>";
 			?>
 			<!--
 			Modificar encuesta<input type="radio" name="option" value = "modificar" checked><br><br>
