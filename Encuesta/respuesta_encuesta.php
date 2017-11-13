@@ -10,13 +10,13 @@
                 session_start();
                 $conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 				$survey_id = $_POST['id_Encuesta'];
-				$usuario = $_SESSION['nombre'];
+				$usuario = $_SESSION['usuario'];
 				$email = $_SESSION['email'];
 
 				//Comprobamos si el usuario YA ha participado en la encuesta previamente
 				$user_check_query= "SELECT * FROM usuarios where nombre = '$usuario' and email = '$email';";
 				$user_check_result = mysqli_query($conexion, $user_check_query) or die("Error al conectar " . mysqli_error());
-				if($saved_user_data = mysqli_fetch_field($user_check_result))
+				if($saved_user_data = mysqli_fetch_assoc($user_check_result))
 				{
 					$saved_user = $saved_user_data['id'];
 					$did_it_before_query = "SELECT * FROM participantes where id_usuario = '$saved_user';";
@@ -46,6 +46,10 @@
 								{
 									echo"<script>alert('Ha habido un problema al enviar sus respuestas. \nPor favor, repita la encuesta');window.location='select_encuesta.php';</script>";
 									exit();
+								}
+								else
+								{
+									echo "Procesando la información. Espere un momento.";
 								}
 							}
 						}
