@@ -25,5 +25,28 @@
             <button type=\"submit\">Crear pregunta</button>
             </form>";
         }
+        else
+        {
+            echo"<form action = \"ModPreg.php\" method = \"POST\" id = \"no_radio\">
+                <input type=\"hidden\" name=\"question\" value=\"$pregunta\">
+                <input type=\"hidden\" name=\"type_option\" value=\"$tipo\">
+                <input type=\"hidden\" name=\"option\" value=\"$opcion\">
+                <input type=\"hidden\" name=\"id_section\" value=\"$section\">
+                <input type=\"hidden\" name=\"id_encuesta\" value=\"$survey\">
+                </form>";
+            echo "<script type=\"text/javascript\">document.getElementById(\"no_radio\").submit()</script>";
+
+        }
+    }
+    else
+    {
+        echo"<form action = \"ModPreg.php\" method = \"POST\" id = \"no_crear\">
+            <input type=\"hidden\" name=\"question\" value=\"$pregunta\">
+            <input type=\"hidden\" name=\"type_option\" value=\"$tipo\">
+            <input type=\"hidden\" name=\"option\" value=\"$opcion\">
+            <input type=\"hidden\" name=\"id_section\" value=\"$section\">
+            <input type=\"hidden\" name=\"id_encuesta\" value=\"$survey\">
+            </form>";
+        echo "<script type=\"text/javascript\">document.getElementById(\"no_crear\").submit()</script>";
     }
 ?>

@@ -22,7 +22,15 @@
 				echo"<input type=\"hidden\" name=\"iden\" value=$survey_id>";
 			?>
 			<button type="submit">Continuar</button>
-		<form>
+		</form>
+
+		<form action = "admin_encuesta.php" method = "POST">
+			<button type = "submit">Volver</button>
+			<?php
+				$survey_id = $_POST['id_Encuesta'];
+				echo"<input type=\"hidden\" name=\"id_Encuesta\" value=$survey_id>";
+			?>
+		</form>
 		</center>
 	</body>
 </html>

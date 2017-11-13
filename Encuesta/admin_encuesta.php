@@ -27,6 +27,9 @@
 				echo"<input type=\"hidden\" name=\"id_Encuesta\" value='$survey_id' />";
 			?>
 		</form>
+		<form action = "select_encuesta.php" method = "POST">
+			<button type = "submit">Volver</button>
+		</form>
 
 		</center>
 	</body>

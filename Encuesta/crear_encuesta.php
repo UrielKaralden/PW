@@ -11,7 +11,10 @@
                 <input type = "text" name = "nombre"><br>
                 Introduzca una descripción de la encuesta:
                 <input type = "text" name = "descripcion"><br>
-                <button type = "submit">Crear</button>
+                <button type = "submit">Crear</button><br>
+            </form>
+            <form action = "select_encuesta.php" method = "POST">
+                <button type = "submit">Volver</button>
             </form>
         </div>
     </body>

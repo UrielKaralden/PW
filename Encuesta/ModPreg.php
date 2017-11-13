@@ -5,7 +5,7 @@
 	$identificator=$_POST['id_encuesta'];
 	$id_section = $_POST['id_section'];
 	if(empty($nombre) && empty($action) && empty($tipo)){
-		echo"<script>alert('Campos Vacios');window.location='crear_seccion.php';</script>";
+		echo"<script>alert('Campos Vacios');window.location='crear_pregunta.php';</script>";
 		exit();
 	}
 	else{
@@ -49,7 +49,7 @@
 				}
 			}else{
 
-				//echo"<script>alert('No existe seccion');";/*window.location='crear_pregunta.php'*/echo";</script>";
+				//echo"<script>alert('No existe seccion');";/*window.location='crear_pregunta.php'echo"</script>";
 				/*echo "<form action = \"crear_pregunta.php\" method = \"POST\" id = \"error_mod_seccion\">
 				<input type = \"hidden\" name = \"id_section\" value = \"$id_section\"><br>
 				<input type = \"hidden\" name = \"id_Encuesta\" value = \"$identificator\"><br>
@@ -83,39 +83,54 @@
 					$id_pregunta = mysqli_fetch_field($id_pregunta_result);
 					++$id_pregunta;*/
 
+					$insert_pregunta = "INSERT INTO preguntas(id_Seccion, tipo_pregunta, pregunta) VALUES
+					($section_id,'$tipo','$nombre');";
+					$result = mysqli_query($conexion, $insert_pregunta)or die("Error al conectar " . mysqli_error($conexion));
+
+					$pregunta_query = "SELECT * FROM preguntas where pregunta = '$nombre';";
+					$pregunta_result = mysqli_query($conexion, $pregunta_query) or die(mysqli_error($conexion));
+					$pregunta = mysqli_fetch_array($pregunta_result);
+					$id_pregunta = $pregunta['id'];
+
 					if(isset($r1))
 					{
-						$r1_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r1');";
+						$r1_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r1') ;";
 						$radio_query = mysqli_query($conexion, $r1_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r1 <br>";
 					}
 					if(isset($r2))
 					{
-						$r2_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r2');";
+						$r2_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r2');";
 						$radio_query = mysqli_query($conexion, $r2_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r2 <br>";
 					}
 
 					if(isset($r3))
 					{
-						$r3_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r3');";
+						$r3_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r3');";
 						$radio_query = mysqli_query($conexion, $r3_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r3 <br>";
 					}
 
 					if(isset($r4))
 					{
-						$r4_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r4');";
+						$r4_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r4');";
 						$radio_query = mysqli_query($conexion, $r4_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r4 <br>";
 					}
 
 					if(isset($r5))
 					{
-						$r5_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r5');";
+						$r5_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r5');";
 						$radio_query = mysqli_query($conexion, $r5_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r5 <br>";
 					}
 
 					if(isset($r6))
 					{
-						$r6_query = "INSERT INTO radio_respuestas(id_Pregunta, respuesta) VALUES ('$id_Pregunta', '$r6');";
+						$r6_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r6');";
 						$radio_query = mysqli_query($conexion, $r6_query)or die("Error al conectar " . mysqli_error($conexion));
+						echo "$r6 <br>";
 					}
 				}
 
@@ -127,10 +142,6 @@
 					++$id_Pregunta;
 				}*/
 
-				$insert_pregunta = "INSERT INTO preguntas(id_Seccion, tipo_pregunta, pregunta)
-					VALUES ('$identificator','$tipo','$nombre');";
-
-				$result = mysqli_query($conexion, $insert_pregunta)or die("Error al conectar " . mysqli_error($conexion));
 
 				if($result)
 				{
@@ -144,7 +155,7 @@
 				}
 				else
 				{
-					echo"<script>alert('Ha ocurrido un error, vuelva a intentarlo')</script>";
+					echo"<script>alert('Ha ocurrido un error al crear la pregunta, vuelva a intentarlo')</script>";
 					echo "<form method=\"POST\" action = \"crear_pregunta.php\" id = \"error_crear_pregunta\">";
 					echo "<input type=\"hidden\" name=\"id_Encuesta\" value= $identificator />";
 					echo "<input type=\"hidden\" name=\"id_section\" value= $id_section />";

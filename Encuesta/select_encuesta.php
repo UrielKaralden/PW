@@ -34,7 +34,7 @@
                     echo "<div align = center>
                         <form action = \"crear_encuesta.php\" method = \"POST\">
                         <input type = \"submit\" value = \"Crear Encuesta\">
-                        </form>
+                        </form> <br><br>
                         </div>";
                 }
                 echo "<div align=center>\n";
@@ -65,7 +65,11 @@
                     $nombre_encuesta = $iter_bucle['nombre'];
                     echo "$nombre_encuesta <input type = \"radio\" name = \"id_Encuesta\" value=\"$survey_id\"><br><br>";
                 }
-                echo "<input type = \"submit\" value = \"Seleccionar\"><br>";
+                echo "<input type = \"submit\" value = \"Seleccionar\"><br><br>
+                </form>
+                <form action = \"logout.php\" method = \"POST\">
+                <input type = \"submit\" value = \"Salir\">
+                </form> <br><br>";
                 /*
                 if($user_admin == 1)
                     //echo "<button type = \"submit\" value = \"Administrar\";";

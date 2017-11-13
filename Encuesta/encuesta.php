@@ -48,9 +48,14 @@
 								}
 							}
 						}
-						include "pie.html";
 					?>
 				</form>
+				<form action = "select_encuesta.php" method = "POST">
+	                <button type = "submit">Volver</button>
+	            </form>
+				<?php
+					include "pie.html";
+				?>
 			</center>
 		</div>
 	</body>
