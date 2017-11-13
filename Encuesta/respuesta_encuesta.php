@@ -63,7 +63,7 @@
 							{
 
 								$pregunta_id = $pregunta['id'];
-								$respuesta_texto = $_POST["$pregunta_id"];
+								$respuesta_texto = $_POST['$pregunta_id'];
 								if($respuesta_texto != '')
 								{
 									$respuesta_query = "INSERT INTO respuestas (id_Encuesta, id_Pregunta, respuesta) VALUES
