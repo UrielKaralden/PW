@@ -92,41 +92,41 @@
 					$pregunta = mysqli_fetch_array($pregunta_result);
 					$id_pregunta = $pregunta['id'];
 
-					if(isset($r1))
+					if($r1 != '')
 					{
 						$r1_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r1') ;";
 						$radio_query = mysqli_query($conexion, $r1_query)or die("Error al conectar " . mysqli_error($conexion));
 						echo "$r1 <br>";
 					}
-					if(isset($r2))
+					if($r2!= '')
 					{
 						$r2_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r2');";
 						$radio_query = mysqli_query($conexion, $r2_query)or die("Error al conectar " . mysqli_error($conexion));
 						echo "$r2 <br>";
 					}
 
-					if(isset($r3))
+					if($r3!= '')
 					{
 						$r3_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r3');";
 						$radio_query = mysqli_query($conexion, $r3_query)or die("Error al conectar " . mysqli_error($conexion));
 						echo "$r3 <br>";
 					}
 
-					if(isset($r4))
+					if($r4!= '')
 					{
 						$r4_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r4');";
 						$radio_query = mysqli_query($conexion, $r4_query)or die("Error al conectar " . mysqli_error($conexion));
 						echo "$r4 <br>";
 					}
 
-					if(isset($r5))
+					if($r5!= '')
 					{
 						$r5_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r5');";
 						$radio_query = mysqli_query($conexion, $r5_query)or die("Error al conectar " . mysqli_error($conexion));
 						echo "$r5 <br>";
 					}
 
-					if(isset($r6))
+					if($r6!= '')
 					{
 						$r6_query = "INSERT INTO radio_respuestas(id_Pregunta, texto) VALUES ('$id_pregunta', '$r6');";
 						$radio_query = mysqli_query($conexion, $r6_query)or die("Error al conectar " . mysqli_error($conexion));
