@@ -63,11 +63,11 @@
 							{
 
 								$pregunta_id = $pregunta['id'];
-								$respuesta_texto = $_POST['$pregunta_id'];
+								$respuesta_texto = $_POST["$pregunta_id"];
 								if($respuesta_texto != '')
 								{
-									$respuesta_query = "INSERT INTO respuestas (id_Encuesta, id_Pregunta, respuesta) VALUES
-									('$survey_id','$pregunta_id', '$respuesta_texto' );";
+									$respuesta_query = "INSERT INTO respuestas (id_Encuesta, id_Pregunta, id_usuario, respuesta) VALUES
+									('$survey_id','$pregunta_id','$saved_user', '$respuesta_texto' );";
 									$respuesta = mysqli_query($conexion, $respuesta_query) or die("Error al conectar 3" . mysqli_error($conexion));
 									if(!$respuesta)
 									{
