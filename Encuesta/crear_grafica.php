@@ -97,7 +97,7 @@
         	}
         	$jsonEncodedData = json_encode($arrData);
 
-			$columnChart2 = new FusionCharts("column2D", "Distribución por edad" , 600, 300, "chart-1", "json", $jsonEncodedData);
+			$columnChart2 = new FusionCharts("column2D", "Distribución por edad" , 600, 300, "chart-2", "json", $jsonEncodedData);
 
         	// Render the chart
         	$columnChart2->render();
@@ -107,7 +107,7 @@
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
 					 WHERE Id_Encuesta = 3
-					 AND id_pregunta = 7
+					 AND id_pregunta = 11
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
@@ -138,7 +138,7 @@
         	}
         	$jsonEncodedData = json_encode($arrData);
 
-			$columnChart3 = new FusionCharts("column2D", "Distribución por matriculaciones" , 600, 300, "chart-1", "json", $jsonEncodedData);
+			$columnChart3 = new FusionCharts("column2D", "Distribución por matriculaciones" , 600, 300, "chart-3", "json", $jsonEncodedData);
 
         	// Render the chart
         	$columnChart3->render();
@@ -150,6 +150,8 @@
   	?>
 
   	<div id="chart-1"><!-- Fusion Charts will render here--></div>
+  	<div id="chart-2"><!-- Fusion Charts will render here--></div>
+  	<div id="chart-3"><!-- Fusion Charts will render here--></div>
 
    </body>
 
