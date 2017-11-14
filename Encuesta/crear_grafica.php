@@ -15,6 +15,8 @@
 
    <body>
   	<?php
+  		include("fusioncharts.php");
+  		
   		$asignatura = $_POST['asignatura'];
      	
      	// Sexo
@@ -32,7 +34,7 @@
 
 		$result = mysqli_query($conexion, $strQuery);
 
-     	if ($result) 
+		if ($result) 
      	{
         	$arrData = array(
         	    "chart" => array(
@@ -43,7 +45,7 @@
            	);
 
         	$arrData["data"] = array();
-
+	
 	    	while($row = mysqli_fetch_array($result)) 
 	    	{
 	           	array_push($arrData["data"], array(
@@ -58,7 +60,7 @@
 
         	$columnChart->render();
         }
-
+        
         // Edad
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
@@ -145,7 +147,6 @@
         	// Close the database connection
         	$connection->close();
      	}
-
   	?>
 
   	<div id="chart-1"><!-- Fusion Charts will render here--></div>
