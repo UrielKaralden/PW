@@ -2,57 +2,6 @@
 <script type="text/javascript" src="fusioncharts/js/themes/fusioncharts.theme.fint.js"></script>
 
 <?php
-	
-
-	$chart = "{  
-			'chart':{  
-			  'caption':'Distribución por género',
-			  'theme':'fint'
-			},
-			'data':[  
-			  {  
-				 'label':'Hombre',
-				 'value':''
-			  },
-			  {  
-				 'label':'Mujer',
-				 'value':''
-			]
-		}";    
-
-        "type": "column2d",
-        "renderAt": "chartContainer",
-        "width": "500",
-        "height": "300",
-        "dataFormat": "json",
-
-        "dataSource":  {
-          "chart": {
-            "caption": "Monthly revenue for last year",
-            "subCaption": "Harry's SuperMart",
-            "xAxisName": "Month",
-            "yAxisName": "Revenues (In USD)",
-            "theme": "fint"
-         },
-         "data": [
-                { "label": "Jan",
-                  "value": "420000" },
-                { "label": "Feb",
-                  "value": "810000" },
-                ]
-      }
-?>
-
-
-
-SELECT * FROM Respuestas
-WHERE Id_Encuesta = 2
-AND Id_Preguntas = [SEXO, Nº MATRICULACIONES, ETC]
-
-
-
-
-<?php
 	include("includes/fusioncharts.php");
 	session_start();
 	$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') 
@@ -151,7 +100,7 @@ AND Id_Preguntas = [SEXO, Nº MATRICULACIONES, ETC]
         	// Render the chart
         	$columnChart->render();
         }
-        
+
         // Matriculaciones
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
