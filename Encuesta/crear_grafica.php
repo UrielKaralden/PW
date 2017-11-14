@@ -23,16 +23,16 @@
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
 					 WHERE Id_Encuesta = 2
-					 AND Id_Preguntas = 8
+					 AND id_pregunta = 8
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
 					 	 WHERE Id_Encuesta = 2
-					 	 AND Id_Preguntas = 2
+					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
-		$result = mysqli_query($conexion, $strQuery);
+		$result = mysqli_query($conexion, $strQuery) or exit("Error code ({$conexion->errno}): {$conexion->error}");
 
 		if ($result) 
      	{
@@ -60,22 +60,17 @@
 
         	$columnChart->render();
         }
-        else
-        {
-        	echo "ERROR";
-        }
-
 
         // Edad
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
 					 WHERE Id_Encuesta = 2
-					 AND Id_Preguntas = 7
+					 AND id_pregunta = 7
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
 					 	 WHERE Id_Encuesta = 2
-					 	 AND Id_Preguntas = 2
+					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
@@ -112,12 +107,12 @@
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
 					 WHERE Id_Encuesta = 2
-					 AND Id_Preguntas = 7
+					 AND id_pregunta = 7
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
 					 	 WHERE Id_Encuesta = 2
-					 	 AND Id_Preguntas = 2
+					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
@@ -150,7 +145,7 @@
 
 
         	// Close the database connection
-        	$connection->close();
+        	$conexion->close();
      	}
   	?>
 
