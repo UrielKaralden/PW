@@ -60,7 +60,12 @@
 
         	$columnChart->render();
         }
-        
+        else
+        {
+        	echo "ERROR";
+        }
+
+
         // Edad
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
