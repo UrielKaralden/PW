@@ -22,12 +22,12 @@
      	// Sexo
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
-					 WHERE Id_Encuesta = 2
+					 WHERE Id_Encuesta = 3
 					 AND id_pregunta = 8
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
-					 	 WHERE Id_Encuesta = 2
+					 	 WHERE Id_Encuesta = 3
 					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
@@ -56,20 +56,20 @@
         	}
         	$jsonEncodedData = json_encode($arrData);
 
-			$columnChart = new FusionCharts("column2D", "Distribución por género" , 600, 300, "chart-1", "json", $jsonEncodedData);
+			$columnChart1 = new FusionCharts("column2D", "Distribución por género" , 600, 300, "chart-1", "json", $jsonEncodedData);
 
-        	$columnChart->render();
+        	$columnChart1->render();
         }
 
         // Edad
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
-					 WHERE Id_Encuesta = 2
+					 WHERE Id_Encuesta = 3
 					 AND id_pregunta = 7
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
-					 	 WHERE Id_Encuesta = 2
+					 	 WHERE Id_Encuesta = 3
 					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
@@ -97,21 +97,21 @@
         	}
         	$jsonEncodedData = json_encode($arrData);
 
-			$columnChart = new FusionCharts("column2D", "Distribución por edad" , 600, 300, "chart-1", "json", $jsonEncodedData);
+			$columnChart2 = new FusionCharts("column2D", "Distribución por edad" , 600, 300, "chart-1", "json", $jsonEncodedData);
 
         	// Render the chart
-        	$columnChart->render();
+        	$columnChart2->render();
         }
 
         // Matriculaciones
      	$strQuery = "SELECT count(*) AS total, respuesta
      				 FROM Respuestas
-					 WHERE Id_Encuesta = 2
+					 WHERE Id_Encuesta = 3
 					 AND id_pregunta = 7
 					 AND Id_Usuario IN
 					 	(SELECT Id_Usuario
 					 	 FROM Respuestas
-					 	 WHERE Id_Encuesta = 2
+					 	 WHERE Id_Encuesta = 3
 					 	 AND id_pregunta = 2
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
@@ -138,10 +138,10 @@
         	}
         	$jsonEncodedData = json_encode($arrData);
 
-			$columnChart = new FusionCharts("column2D", "Distribución por matriculaciones" , 600, 300, "chart-1", "json", $jsonEncodedData);
+			$columnChart3 = new FusionCharts("column2D", "Distribución por matriculaciones" , 600, 300, "chart-1", "json", $jsonEncodedData);
 
         	// Render the chart
-        	$columnChart->render();
+        	$columnChart3->render();
 
 
         	// Close the database connection
