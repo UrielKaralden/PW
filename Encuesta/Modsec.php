@@ -53,7 +53,7 @@
 				}
 			}else{
 				if($action=="Eliminar"){
-					$section_id_query = "SELECT id from secciones where nombre='$nombre';";
+					$section_id_query = "SELECT * from secciones where nombre='$nombre';";
 					$section_id_result = mysqli_query($conexion, $section_id_query)or die (mysqli_error($conexion));
 					$section_assoc = mysqli_fetch_assoc($section_id_result);
 					$section_id = $section_assoc['id'];
@@ -67,7 +67,7 @@
 						if($pregunta_type == 'radio')
 						{
 							// Eliminamos las secciones de esa pregunta
-							$delete_secciones_query = "DELETE * FROM secciones where secciones.id_Pregunta = $pregunta_id;";
+							$delete_secciones_query = "DELETE FROM radio_respuestas where id_Pregunta = $pregunta_id;";
 							$delete_secciones = mysqli_query($conexion, $delete_secciones_query) or die (mysqli_error($conexion));
 							if($delete_secciones)
 								echo "RADIO RESPUESTAS ELIMINADAS CORRECTAMENTE <br>";

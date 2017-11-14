@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2017 a las 18:50:26
+-- Tiempo de generación: 14-11-2017 a las 00:16:47
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -104,21 +104,13 @@ INSERT INTO `preguntas` (`id`, `id_Seccion`, `tipo_pregunta`, `pregunta`) VALUES
 (7, 2, 'number', 'Edad(aÃ±os)'),
 (8, 2, 'radio', 'Sexo'),
 (9, 2, 'radio', 'Curso mÃ¡s alto en el que estÃ¡ matriculado'),
-(10, 2, 'radio', 'Curso mÃ¡s alto en el que estÃ¡ matriculado'),
 (11, 2, 'radio', 'Curso mÃ¡s bajo en el que estÃ¡ matriculado'),
-(12, 2, 'radio', 'Curso mÃ¡s bajo en el que estÃ¡ matriculado'),
 (13, 2, 'radio', 'Veces que se ha matriculado en esta asignatura'),
-(14, 2, 'radio', 'Veces que se ha matriculado en esta asignatura'),
 (15, 2, 'radio', 'Veces que se ha examinado en esta asignatura'),
-(16, 2, 'radio', 'Veces que se ha examinado en esta asignatura'),
 (17, 2, 'radio', 'La asignatura le interesa'),
-(18, 2, 'radio', 'La asignatura le interesa'),
 (19, 2, 'radio', 'Hace uso de las tutorÃ­as'),
-(20, 2, 'radio', 'Hace uso de las tutorÃ­as'),
 (21, 2, 'radio', 'Dificultad de la asignatura'),
-(22, 2, 'radio', 'Dificultad de la asignatura'),
 (23, 2, 'radio', 'CalificaciÃ³n esperada'),
-(24, 2, 'radio', 'CalificaciÃ³n esperada'),
 (25, 2, 'radio', 'Asistencia a clase (% de horas lectivas)'),
 (26, 3, 'radio', 'EL/LA PROFESOR/A INFORMA SOBRE LOS DISTINTOS <br>ASPECTOS DE LA GUÃA DOCENTE O PROGRAMA <br>DE LA ASIGNATURA (OBJETIVOS, ACTIVIDADES, <br>CONTENIDOS DEL TEMARIO, METODOLOGÃA, BIBLIOGRAFÃA, SISTEMAS DE EVALUACIÃ“N, ETC.)'),
 (27, 4, 'radio', 'Imparte las clases en el horario fijado'),
@@ -352,7 +344,7 @@ INSERT INTO `radio_respuestas` (`id`, `id_Pregunta`, `texto`) VALUES
 
 CREATE TABLE `respuestas` (
   `id` int(11) NOT NULL,
-  `id_Preguntas` int(11) NOT NULL,
+  `id_Pregunta` int(11) NOT NULL,
   `id_Encuestas` int(11) NOT NULL,
   `respuesta` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -448,7 +440,7 @@ ALTER TABLE `radio_respuestas`
 --
 ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_Preguntas` (`id_Preguntas`),
+  ADD KEY `id_Pregunta` (`id_Pregunta`),
   ADD KEY `id_Encuestas` (`id_Encuestas`);
 
 --

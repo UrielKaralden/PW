@@ -61,7 +61,7 @@
 						echo "MERECES LA MUERTE, YASUO <br>";
 					}
 				}
-				$delete_respuestas_query = "DELETE  FROM respuestas WHERE respuestas.id_Preguntas = '$pregunta_id';";
+				$delete_respuestas_query = "DELETE  FROM respuestas WHERE id_Pregunta = '$pregunta_id';";
 				$delete_respuestas = mysqli_query($conexion, $delete_respuestas_query) or die (mysqli_error($conexion));
 				if($delete_respuestas)
 					echo "RESPUESTAS ELIMINADAS CORRECTAMENTE <br>";
@@ -84,7 +84,7 @@
 				{
 					echo "MERECES LA MUERTE, LLOQUER<br>";
 				}
-				$delete_pregunta_query = "DELETE FROM preguntas WHERE preguntas.id = '$pregunta_id';";
+				$delete_pregunta_query = "DELETE FROM preguntas WHERE id = '$pregunta_id';";
 				$delete_pregunta = mysqli_query($conexion, $delete_pregunta_query) or die (mysqli_error($conexion));
 				if(isset($delete_pregunta))
 					if($delete_pregunta)
@@ -109,7 +109,7 @@
 			{
 				echo "MERECES LA MUERTE, WEBMASTER<br>";
 			}
-			$delete_section_query = "DELETE  FROM secciones WHERE secciones.id = '$section_id';";
+			$delete_section_query = "DELETE  FROM secciones WHERE id = '$section_id';";
 			$delete_section = mysqli_query($conexion, $delete_section_query) or die (mysqli_error($conexion));
 			if(isset($delete_section))
 				echo "SECCION ELIMINADA CORRECTAMENTE <br>";
@@ -135,7 +135,7 @@
 				echo "MERECES LA MUERTE, ALEJANDRO <br>";
 			}
 		}
-		$delete_encuesta_query="DELETE FROM encuestas WHERE encuestas.id='$survey_id';";
+		$delete_encuesta_query="DELETE FROM encuestas WHERE id='$survey_id';";
 		$delete_encuesta=mysqli_query($conexion, $delete_encuesta_query) or die (mysqli_error($conexion));
 		if(isset($delete_encuesta))
 			echo "ENCUESTA ELIMINADA CORRECTAMENTE <br>";

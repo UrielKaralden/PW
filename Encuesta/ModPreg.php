@@ -200,7 +200,7 @@
 					$update_pre2s_query= "ALTER TABLE preguntas AUTO_INCREMENT =1;";
 					$update_pre2s=mysqli_query($conexion, $update_pre2s_query) or die (mysqli_error($conexion));
 
-					$delete_respuestas_query = "DELETE FROM respuestas WHERE id_Preguntas = '$id_question';";
+					$delete_respuestas_query = "DELETE FROM respuestas WHERE id_Pregunta = '$id_question';";
 					$delete_respuestas = mysqli_query($conexion, $delete_respuestas_query)or die("Error al conectar " . mysqli_error($conexion));
 
 					$update_resp_query = "ALTER TABLE respuestas DROP id;";
