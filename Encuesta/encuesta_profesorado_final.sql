@@ -346,7 +346,7 @@ CREATE TABLE `respuestas` (
   `id` int(11) NOT NULL,
   `id_Pregunta` int(11) NOT NULL,
   `id_Encuestas` int(11) NOT NULL,
-  `respuesta` varchar(50) NOT NULL
+  `respuesta` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
