@@ -28,12 +28,7 @@
 	// Redireccion si los campos se encuentran vacíos
 	if(empty($usuario) && empty($pswd))
 	{
-		 echo"<script>alert('Lamentamos informarle de que no ha rellenado todos los campos.\nPor favor, rellene todos los campos');window.location='Login.html';</script>";
-	}
-	if ($usuario == '')
-	{
-		echo"<script>alert('Por favor, introduzca un usuario.');window.location='Login.html';</script>";
-
+		 echo"<script>alert('Lamentamos informarle de que no ha rellenado todos los campos.\nPor favor, rellene todos los campos');window.location='Login.php';</script>";
 	}
 
 	$query = "SELECT * FROM usuarios WHERE nombre = '$usuario';";
@@ -42,9 +37,13 @@
 	$user_data = $users['nombre'];
 	if($user_data == $usuario)
 	{
+		echo "EL USUARIO ES CORRECTO, MOTHERFUCKER";
+		echo "<br><br>";
+
+
 		if(password_verify($pswd, $users['password']))
 		{
-			//echo " LA CONTRASEÑA ES CORRECTA, MOTHERFUCKER";
+			//echo " LA CONTRASEÑA ES CORRECTA";
 			$_SESSION['usuario']=$users['nombre'];
 			$_SESSION['email']=$users['email'];
 			$_SESSION['admin']=$users['admin'];
@@ -55,16 +54,15 @@
 		}
 		else
 		{
-			echo"<script>alert('Lamentamos informarle de que la contraseña no es correcta.\nPor favor, revísela.');window.location='Login.html';</script>";
-			echo "<br><br>";
-			//echo"<script>alert('Fuera Invasor');window.location='Login.html';</script>";
+			/*echo " LA CONTRASEÑA NO ES CORRECTA \n";
+			echo "<br><br>";*/
+			echo"<script>alert('La contraseña que ha introducido no es correcta');window.location='Login.html';</script>";
 			exit();
 		}
 	}
 	else
 	{
-	echo"<script>alert('El usuario que ha introducido no está registrado.\nPor favor, registrese.');window.location='Login.html';</script>";
-
+		echo "Fuera esssstupido";
 		//echo"<script>alert('Fuera Invasor 2');window.location='Login.html';</script>";
 		exit();
 	}

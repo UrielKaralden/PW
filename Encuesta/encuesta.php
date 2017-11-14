@@ -14,6 +14,7 @@
                         session_start();
 						$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') or die("Error al conectar " . mysqli_error());
 						include "encabezado.php";
+						echo "<font style = \"text-transform: none\";>";
 						$survey_id = $_POST['id_Encuesta'];
 						$secciones_encuesta_query = "SELECT * FROM secciones WHERE id_Encuesta = '$survey_id';";
 						$secciones_encuesta_result = mysqli_query($conexion, $secciones_encuesta_query) or die(mysqli_error($conexion));
@@ -33,7 +34,7 @@
 								$first_radio = true;
 
 								echo "<br>$texto<br><br>";
-								
+
 								if($tipo == 'radio')
 								{
 									$respuestas_query = "SELECT * FROM radio_respuestas WHERE id_Pregunta = '$id_pregunta';";
@@ -66,9 +67,11 @@
 				<form action = "select_encuesta.php" method = "POST">
 	                <br><br><button type = "submit">Volver</button><br>
 	            </form>
+				</font>
 				<?php
 					include "pie.html";
 				?>
+
 			</center>
 		</div>
 	</body>
