@@ -45,8 +45,8 @@
 
 					{
 						echo "Usuario duplicado <br>";
-						//echo"<script>alert('Usted ha participado en la encuesta previamente.Lamentamos comunicarle que no puede volver a participar.Muchas gracias y disculpe las molestias.');window.location='select_encuesta.php';</script>";
-						//exit();
+						echo"<script>alert('Usted ha participado en la encuesta previamente.Lamentamos comunicarle que no puede volver a participar.Muchas gracias y disculpe las molestias.');window.location='select_encuesta.php';</script>";
+						exit();
 					}
 					else
 					{
@@ -61,8 +61,8 @@
 							$preguntas_result = mysqli_query($conexion, $preguntas_query) or die("Error al conectar 2" . mysqli_error($conexion));
 							while($pregunta = mysqli_fetch_assoc($preguntas_result))
 							{
-
 								$pregunta_id = $pregunta['id'];
+								echo"$pregunta_id <br>";
 								$respuesta_texto = $_POST["$pregunta_id"];
 								if($respuesta_texto != '')
 								{
@@ -71,12 +71,12 @@
 									$respuesta = mysqli_query($conexion, $respuesta_query) or die("Error al conectar 3" . mysqli_error($conexion));
 									if(!$respuesta)
 									{
-										echo"<script>alert('Ha habido un problema al enviar sus respuestas. \nPor favor, repita la encuesta');window.location='select_encuesta.php';</script>";
+										echo"<script>alert('Ha habido un problema al enviar sus respuestas. Por favor, repita la encuesta');window.location='select_encuesta.php';</script>";
 										exit();
 									}
 									else
 									{
-										echo "Procesando la información. Espere un momento.";
+										echo "Procesando la información. Espere un momento.<br>";
 									}
 								}
 							}
@@ -90,22 +90,9 @@
 							$user = $user_data['id'];
 							$participante_query = "INSERT INTO participantes(id_usuario, id_encuesta) VALUES ('$user', '$survey_id');";
 							$participante_result = mysqli_query($conexion, $participante_query) or die("Error al conectar " . mysqli_error($conexion));
-							if(!$participante_result)
-							{
-								echo"<script>alert('Ha habido un problema al almacenar sus respuestas. \nPor favor, repita la encuesta');window.location='select_encuesta.php';</script>";
-								exit();
-							}
-							else
-							{
-							echo"<script>alert('Sus respuestas han sido almacenadas. \nGracias por participar');;window.location='select_encuesta.php';</script>";
-							exit();
-							}
 						}
-						else
-						{
-							echo"<script>alert('Ha habido un problema al registrar sus respuestas. \nPor favor, repita la encuesta');window.location='select_encuesta.php';</script>";
-							exit();
-						}
+						echo "Finalizando encuesta...";
+						echo "<script>alert('Sus respuestas han sido enviadas. ¡Gracias por participar!');window.location='select_encuesta.php';</script>";
 					}
 				}
 				mysqli_close($conexion);
