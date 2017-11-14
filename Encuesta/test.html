@@ -1,0 +1,52 @@
+<script type="text/javascript" src="fusioncharts/js/fusioncharts.js"></script>
+<script type="text/javascript" src="fusioncharts/js/themes/fusioncharts.theme.fint.js"></script>
+
+<html>
+<title>Informe</title>
+
+    <body>
+        <div align = "center">
+            <h2>Informe estad&iacutestico</h2>
+            Introduzca el c&oacutedigo de la asignatura
+        </div>
+        <div align = "center">
+            <form action = "crear_grafica.php" method = "POST">
+            <input type = "string" name ="asignatura" value = "Asignatura">
+            </form> <br><br>
+        </div>
+    </body>
+</html>
+<?php?>
+
+
+
+
+<!--
+  FusionCharts.ready(function(){
+    var revenueChart = new FusionCharts({
+        "type": "column2d",
+        "renderAt": "chartContainer",
+        "width": "500",
+        "height": "300",
+        "dataFormat": "json",
+
+        "dataSource":  {
+          "chart": {
+            "caption": "Monthly revenue for last year",
+            "subCaption": "Harry's SuperMart",
+            "xAxisName": "Month",
+            "yAxisName": "Revenues (In USD)",
+            "theme": "fint"
+         },
+         "data": [
+                { "label": "Jan",
+                  "value": "420000" },
+                { "label": "Feb",
+                  "value": "810000" },
+                ]
+      }
+
+  });
+revenueChart.render();
+})
+!>
