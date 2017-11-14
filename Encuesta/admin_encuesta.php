@@ -14,14 +14,19 @@
 			<?php
 			echo "Visualizar encuesta<input type=\"radio\" name=\"option\" value = \"visualizar\" checked><br><br>
 			Modificar encuesta<input type=\"radio\" name=\"option\" value = \"modificar\"><br><br>
-			Eliminar encuesta<input type = \"radio\" name = \"option\" value = \"eliminar\"><br><br>
-			Realizar análisis estadístico<input type = \"radio\" name = \"option\" value = \"analizar\"><br><br>";
+			Eliminar encuesta<input type = \"radio\" name = \"option\" value = \"eliminar\"><br><br>";
+			echo "</form>
+			<form action = \"informe.html\" method =\"POST\">
+			<input type = \"submit\" value = \"Realizar analisis estadístico\"><br><br>
+			</form>";
+
 			?>
 			<!--
 			Modificar encuesta<input type="radio" name="option" value = "modificar" checked><br><br>
 			Eliminar encuesta<input type = "radio" name = "option" value = "eliminar"><br><br>
 			-->
-			<button type="submit">Seleccionar</button><br>
+			<form action ="aux_admin.php" method = "POST">
+				<button type="submit">Seleccionar</button><br>
 			<?php
 				$survey_id = $_POST['id_Encuesta'];
 				//echo $survey_info;
