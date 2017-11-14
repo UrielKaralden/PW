@@ -31,7 +31,9 @@
 								$tipo = $pregunta['tipo_pregunta'];
 								$texto = $pregunta['pregunta'];
 								$first_radio = true;
+
 								echo "<br>$texto<br><br>";
+								
 								if($tipo == 'radio')
 								{
 									$respuestas_query = "SELECT * FROM radio_respuestas WHERE id_Pregunta = '$id_pregunta';";

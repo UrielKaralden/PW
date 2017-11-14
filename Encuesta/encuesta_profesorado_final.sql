@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2017 a las 00:16:47
+-- Tiempo de generación: 14-11-2017 a las 00:38:47
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 7.0.10
 
@@ -345,8 +345,9 @@ INSERT INTO `radio_respuestas` (`id`, `id_Pregunta`, `texto`) VALUES
 CREATE TABLE `respuestas` (
   `id` int(11) NOT NULL,
   `id_Pregunta` int(11) NOT NULL,
-  `id_Encuestas` int(11) NOT NULL,
-  `respuesta` varchar(255) NOT NULL
+  `id_Encuesta` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `respuesta` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -441,7 +442,7 @@ ALTER TABLE `radio_respuestas`
 ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_Pregunta` (`id_Pregunta`),
-  ADD KEY `id_Encuestas` (`id_Encuestas`);
+  ADD KEY `id_Encuestas` (`id_Encuesta`);
 
 --
 -- Indices de la tabla `secciones`
@@ -475,7 +476,7 @@ ALTER TABLE `estudios`
 -- AUTO_INCREMENT de la tabla `participantes`
 --
 ALTER TABLE `participantes`
-  MODIFY `id_participacion` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_participacion` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
