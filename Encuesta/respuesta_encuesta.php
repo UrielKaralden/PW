@@ -16,7 +16,7 @@
 				echo "$usuario";
 
 				//Comprobamos si el usuario YA ha participado en la encuesta previamente
-				echo "Buscando usuario...<br>";
+			/*	echo "Buscando usuario...<br>";
 				$user_check_query= "SELECT * FROM usuarios where nombre = '$usuario' and email = '$email';";
 				$user_check_result = mysqli_query($conexion, $user_check_query) or die("Error al conectar " . mysqli_error($conexion));
 				if($saved_user_data = mysqli_fetch_assoc($user_check_result))
@@ -40,7 +40,7 @@
 					/*
 					$num_rows_data = mysqli_fetch_array($did_it_before_result);
 					$num_rows = $num_rows_data['0'];
-					echo "$num_rows";*/
+					echo "$num_rows";
 					if($coincidence == 0)
 
 					{
@@ -49,7 +49,7 @@
 						exit();
 					}
 					else
-					{
+					{*/
 						echo "Usuario correcto <br>";
 						$secciones_query = "SELECT * FROM secciones where id_Encuesta = '$survey_id';";
 						$secciones_result = mysqli_query($conexion, $secciones_query) or die("Error al conectar 1" . mysqli_error($conexion));
@@ -80,7 +80,7 @@
 									}
 								}
 							}
-						}
+					//	}
 
 						// Añadimos al usuario como participante de la encuesta
 						$user_data_query = "SELECT * FROM usuarios where nombre = '$usuario';";
