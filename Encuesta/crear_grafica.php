@@ -2,7 +2,6 @@
 <script type="text/javascript" src="fusioncharts/js/themes/fusioncharts.theme.fint.js"></script>
 
 <?php
-	include("includes/fusioncharts.php");
 	session_start();
 	$conexion = mysqli_connect('localhost',"root","",'Encuesta_profesorado') 
 						or die("Error al conectar " . mysqli_error());
@@ -31,7 +30,7 @@
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
-		$result = mysqli_query($conexion, $insertar_encuesta);
+		$result = mysqli_query($conexion, $strQuery);
 
      	if ($result) 
      	{
@@ -45,19 +44,20 @@
 
         	$arrData["data"] = array();
 
-	    	while($row = mysqli_fetch_array($result)) {
-           	array_push($arrData["data"], array(
-              	"label" => $row["respuesta"],
-              	"value" => $row["total"]
-              	)
-           	);
+	    	while($row = mysqli_fetch_array($result)) 
+	    	{
+	           	array_push($arrData["data"], array(
+	              	"label" => $row["respuesta"],
+	              	"value" => $row["total"]
+	              	)
+	           	);
         	}
         	$jsonEncodedData = json_encode($arrData);
 
 			$columnChart = new FusionCharts("column2D", "Distribución por género" , 600, 300, "chart-1", "json", $jsonEncodedData);
 
         	$columnChart->render();
-         }
+        }
 
         // Edad
      	$strQuery = "SELECT count(*) AS total, respuesta
@@ -72,7 +72,7 @@
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
-		$result = mysqli_query($conexion, $insertar_encuesta);
+		$result = mysqli_query($conexion, $strQuery);
 
      	if ($result) 
      	{
@@ -114,7 +114,7 @@
 					 	 AND respuesta = '$asignatura')
 					 GROUP BY respuesta";
 
-		$result = mysqli_query($conexion, $insertar_encuesta);
+		$result = mysqli_query($conexion, $strQuery);
 
      	if ($result) {
         	$arrData = array(
